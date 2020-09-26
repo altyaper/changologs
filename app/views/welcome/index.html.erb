@@ -1,21 +1,24 @@
 <%= render 'header' %>
 
 <div class='container'>
+  <% if @logs.empty? %>
+  <div class="jumbotron jumbotron-fluid border rounded">
+    <div class="container">
+      <h4 class="text-center">No se encontraron logs</h4>
+    </div>
+  </div>
+  <% end %>
   <div class='row'>
-    <div class='col-md-12'>
-      <% @logs.each do |log| %>
-        <div class='row mt-3'>
-          <div class='col-sm'>
-            <div class='card'>
-              <div class="card-body">
-                <h5 class="card-title"><%= log.title %></h5>
-                <span><%= log.created_at.to_date %>
-                <p class="card-text"><%= log.text %></p>
-              </div>
-            </div>
+    <% @logs.each do |log| %>
+      <div class='col-md-4 mb-4'>
+        <div class='card p-2 shadow-sm bg-white'>
+          <div class="card-body">
+            <h5 class="card-title"><%= log.title %></h5>
+            <span><%= log.created_at.to_date %>
+            <p class="card-text"><%= log.text.html_safe %></p>
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

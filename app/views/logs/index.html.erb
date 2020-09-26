@@ -13,27 +13,34 @@
         </div>
       </div>
 
-      
       <table class='table'>
-        <tr>
-          <th>Title</th>
-          <th>Text</th>
-          <th>Actions</th>
-        </tr>
-      
-        <% @logs.each do |log| %>
+        <thead class="thead-dark">
           <tr>
-            <td><%= log.title %></td>
-            <td><%= log.text %></td>
-            <td>
-              <%= link_to 'Show', log_path(log) %>
-              <%= link_to 'Edit', edit_log_path(log) %>
-              <%= link_to 'Destroy', log_path(log),
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %>
-            </td>
+            <th scope="col">Title</th>
+            <th scope="col">Text</th>
+            <th scope="col">Actions</th>
           </tr>
-        <% end %>
+        </thead>
+        <tbody>
+          <% @logs.each do |log| %>
+            <tr>
+              <td><%= log.title %></td>
+              <td><%= log.text.html_safe %></td>
+              <td>
+                <%= link_to log_path(log), class: "badge badge-primary" do %>
+                  <i class="fa fa-eye"></i>
+                <% end %>
+
+                <%= link_to edit_log_path(log), class: "badge badge-secondary" do %>
+                  <i class="fa fa-edit"></i>
+                <% end %>
+                <%= link_to log_path(log), class: "badge badge-danger", method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="fa fa-trash"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>

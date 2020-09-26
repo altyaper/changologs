@@ -4,9 +4,11 @@
 
 .header {
   text-align: right;
-  &:hover {
-    a {
-      transform: translateY(1);
+  overflow: hidden;
+  &:hover,
+  &:focus {
+    .new_link {
+      transform: translateY(0px);
     }
   }
   h2 {
@@ -14,12 +16,18 @@
     color: white;
   }
   a {
+    display: block;
     color: white;
-    position: relative;
-    transform: translateY(0);
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .new_link {
+    transform: translateY(100px);
+    transition: all 0.5s cubic-bezier(.49,-0.09,0,1.11);
   }
   .header__left {
-    background-color: #1f77f8;
+    background-color: $blue;
     padding: 20px;
   }
 }

@@ -12,5 +12,27 @@
  *
  */
 
- @import "bootstrap";
- @import "logs.scss";
+@import "bootstrap";
+@import "variables";
+@import "logs.scss";
+
+@import "froala_editor.min";
+@import "froala_style.min";
+@import "font-awesome";
+
+a {
+  text-decoration: none;
+  color: $blue;
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+.shadow {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.shadow-sm {
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+
