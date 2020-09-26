@@ -69,3 +69,6 @@ gem 'pry', '~> 0.13.1'
 gem "wysiwyg-rails"
 gem "font-awesome-rails"
 
+gem 'devise'
+
+gem 'devise-bootstrap-views', '~> 1.0'
