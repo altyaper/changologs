@@ -1,0 +1,25 @@
+// Place all the styles related to the Logs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.header {
+  text-align: right;
+  &:hover {
+    a {
+      transform: translateY(1);
+    }
+  }
+  h2 {
+    font-weight: bold;
+    color: white;
+  }
+  a {
+    color: white;
+    position: relative;
+    transform: translateY(0);
+  }
+  .header__left {
+    background-color: #1f77f8;
+    padding: 20px;
+  }
+}

@@ -1,0 +1,14 @@
+<%= render 'welcome/header' %>
+<div class='container border p-4'>
+  <div class='row'>
+    <div class='col-md-12'>
+       <h1><%= @log.title %></h1>
+      
+      <p>
+        <%= @log.text %>
+      </p>
+
+      <%= link_to 'Edit', edit_log_path(@log), class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

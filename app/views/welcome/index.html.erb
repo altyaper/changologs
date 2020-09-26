@@ -1,2 +1,21 @@
-<h1>Hello, Rails!</h1>
-<%= link_to 'My Blog', controller: 'articles' %>
+<%= render 'header' %>
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <% @logs.each do |log| %>
+        <div class='row mt-3'>
+          <div class='col-sm'>
+            <div class='card'>
+              <div class="card-body">
+                <h5 class="card-title"><%= log.title %></h5>
+                <span><%= log.created_at.to_date %>
+                <p class="card-text"><%= log.text %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
