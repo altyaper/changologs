@@ -4,7 +4,7 @@
 $(document).ready(function() {
   var cleanSelectedColors = function() {
     var colorTags = $('.color-select__color');
-    for (let i = 0; i < colorTags.length; i++) {
+    for (var i = 0; i < colorTags.length; i++) {
       var tag = colorTags[i];
       $(tag).removeClass('selected');
     }
