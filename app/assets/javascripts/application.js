@@ -16,8 +16,7 @@
 //= require jquery
 //= require popper
 //= require bootstrap
-//= require bootstrap-tagsinput
 //= require summernote/summernote-bs4.min
 //= require summernote-init
-
+//= require bootstrap-tagsinput
 //= require_tree .
