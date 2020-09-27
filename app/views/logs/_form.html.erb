@@ -9,7 +9,7 @@
     
       <div class="form-group">
         <%= form.label :text %><br>
-        <%= form.text_area :text, class: 'form-control', id: 'editor' %>
+        <%= form.text_area :text, class: 'form-control', 'data-provider': :summernote, rows: 5 %>
       </div>
     </div>
     <div class="col-md-4">
@@ -27,7 +27,3 @@
 
  
 <% end %>
-
-<script>
-  new FroalaEditor('#editor');
-</script>
