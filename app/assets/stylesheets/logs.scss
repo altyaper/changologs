@@ -29,6 +29,9 @@
 }
 
 .log {
+  .card {
+    border-width: 3px;
+  }
   .created_date {
     font-size: 14px;
   }
@@ -37,5 +40,46 @@
 .second-toolbar {
   a {
     visibility: hidden;
+  }
+}
+
+.color-select {
+  .color-select__color {
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+    border: 3px solid white;
+    &:hover {
+      border: 3px solid gray;
+      cursor: pointer;
+    }
+    &.selected {
+      border: 3px solid black;
+    }
+    &-1 {
+      background-color: #ffcfcf;
+    }
+    &-2 {
+      background-color: #e1feff;
+    }
+    &-3 {
+      background-color: #FFF740;
+    }
+    &-4 {
+      background-color: #DB5F5D;
+    }
+  }
+}
+
+form {
+  .note-popover .popover-content,
+  .card-header.note-toolbar {
+    background-color: #fff;
+  }
+
+  .note-editor {
+    &.note-frame {
+      border: 1px solid #dee2e6;
+    }
   }
 }

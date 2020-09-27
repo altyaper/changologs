@@ -10,7 +10,7 @@
   <div class='row'>
     <% @logs.each do |log| %>
       <div class='col-md-4 mb-4 log'>
-        <div class='card p-2 shadow-sm bg-white'>
+        <div class='card p-2 shadow-sm' style="border-color: <%= log.color %>">
           <div class="card-body position-relative">
             <div class="position-absolute text-right log-actions">
               <%= link_to edit_log_path(log), class: "mr-1" do %>

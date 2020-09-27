@@ -11,7 +11,6 @@ class LogsController < ApplicationController
 
   def new
     @log = Log.new
-    @log.tags = []
   end
 
   def create
@@ -46,6 +45,6 @@ class LogsController < ApplicationController
 
   private
     def log_params
-      params.require(:log).permit(:title, :text, :tag_list)
+      params.require(:log).permit(:title, :text, :tag_list, :color)
     end
 end
