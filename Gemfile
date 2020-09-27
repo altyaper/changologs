@@ -62,10 +62,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Postgres
 gem 'pg'
 
-gem 'pry', '~> 0.13.1'
+gem 'byebug'
+
 gem "wysiwyg-rails"
 gem "font-awesome-rails"
 
 gem 'devise'
 
 gem 'devise-bootstrap-views', '~> 1.0'
+
+gem 'bootstrap-tagsinput-rails'

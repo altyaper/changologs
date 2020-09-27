@@ -10,7 +10,9 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap-tagsinput
  */
+ 
 
 @import "bootstrap";
 @import "variables";
@@ -35,4 +37,21 @@ a {
 .shadow-sm {
   box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
 }
+
+.form-group {
+  .bootstrap-tagsinput {
+    padding: 6px 5px;
+    min-height: 50px;
+    width: 100%;
+  }
+  .tag {
+    background-color: #5bc0de;
+    padding: 3px 5px;
+    border-radius: 5px;
+    margin: 4px;
+    display: inline-block;
+  }
+}
+  
+  
 

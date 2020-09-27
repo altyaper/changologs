@@ -17,4 +17,5 @@
 //= require jquery
 //= require popper
 //= require bootstrap
+//= require bootstrap-tagsinput
 //= require_tree .

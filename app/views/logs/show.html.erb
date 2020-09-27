@@ -5,8 +5,14 @@
        <h1><%= @log.title %></h1>
       
       <p>
-        <%= @log.text.html_safe %>
+        <%= sanitize @log.text %>
       </p>
+
+      <div class="mb-4">
+        <% @log.tags.each do |tag| %>
+          <div class="badge badge-primary"><%= tag.name %></div>
+        <% end %>
+      </div>
 
       <%= link_to 'Edit', edit_log_path(@log), class: 'btn btn-primary' %>
     </div>
