@@ -25,7 +25,7 @@ test:
 
 production:
   <<: *default
-  host: localhost
+  host: <%= ENV['LOG_DATABASE_HOST'] %>
   adapter: postgresql
   encoding: utf8
   database: <%= ENV['LOG_DATABASE_NAME'] %>
