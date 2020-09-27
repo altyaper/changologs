@@ -11,7 +11,15 @@
     <% @logs.each do |log| %>
       <div class='col-md-4 mb-4 log'>
         <div class='card p-2 shadow-sm bg-white'>
-          <div class="card-body">
+          <div class="card-body position-relative">
+            <div class="position-absolute text-right log-actions">
+              <%= link_to edit_log_path(log), class: "mr-1" do %>
+                <i class="fa fa-edit"></i>
+              <% end %>
+              <%= link_to log_path(log), class: "badge badge-danger", method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+            </div>
             <span class='created_date'><%= log.created_at.to_date.strftime("%B, %d, %Y") %></span>
             <h5 class="card-title"><%= log.title %></h5>
             <div class="py-1 border-bottom"></div>
@@ -29,3 +37,4 @@
     <% end %>
   </div>
 </div>
+http:///

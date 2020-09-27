@@ -11,6 +11,7 @@ class LogsController < ApplicationController
 
   def new
     @log = Log.new
+    @log.tags = []
   end
 
   def create
