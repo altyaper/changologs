@@ -1,5 +1,4 @@
-<%= render 'header' %>
-
+<%= render 'partials/header' %>
 <div class='container'>
   <% if @logs.empty? %>
   <div class="jumbotron jumbotron-fluid border rounded">
@@ -10,12 +9,14 @@
   <% end %>
   <div class='row'>
     <% @logs.each do |log| %>
-      <div class='col-md-4 mb-4'>
+      <div class='col-md-4 mb-4 log'>
         <div class='card p-2 shadow-sm bg-white'>
           <div class="card-body">
+            <span class='created_date'><%= log.created_at.to_date.strftime("%B, %d, %Y") %></span>
             <h5 class="card-title"><%= log.title %></h5>
-            <span><%= log.created_at.to_date %>
-            <p class="card-text"><%= log.text.html_safe %></p>
+            <div class="py-1 border-bottom"></div>
+            <p class="card-text"><%= sanitize log.text %></p>
+            <p class="card-text"><%= log.user.full_name %></p>
           </div>
         </div>
       </div>

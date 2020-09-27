@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require froala_editor.min.js
 //= require jquery
+//= require popper
+//= require bootstrap
 //= require_tree .

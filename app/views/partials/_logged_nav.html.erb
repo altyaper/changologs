@@ -1,0 +1,24 @@
+<div class="ml-auto d-flex">
+  <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Logs
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    <%= link_to 'New log', new_log_path, class: 'dropdown-item' %>
+  </div>
+  </div>
+  
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary">
+      <i class="fa fa-user mr-2"></i>
+      <%= current_user.full_name %>
+    </button>
+    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+    </div>
+  </div>
+
+</div>

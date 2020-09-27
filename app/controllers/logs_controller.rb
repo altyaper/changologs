@@ -32,6 +32,7 @@ class LogsController < ApplicationController
 
   def create
     @log = Log.create(log_params)
+    @log.user_id = current_user.id
     if @log.save!
       redirect_to @log
     else

@@ -2,32 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.header {
-  text-align: right;
-  overflow: hidden;
-  &:hover,
-  &:focus {
-    .new_link {
-      transform: translateY(0px);
+#header {
+  &.header {
+    text-align: right;
+    overflow: hidden;
+    h2 {
+      font-weight: bold;
+      color: white;
+    }
+    a {
+      display: block;
+      color: white;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    .header__left {
+      background-color: $blue;
+      padding: 20px;
     }
   }
-  h2 {
-    font-weight: bold;
-    color: white;
+  
+  .logo-wrapper {
+    width: 150px;
   }
-  a {
-    display: block;
-    color: white;
-    &:hover {
-      text-decoration: none;
-    }
-  }
-  .new_link {
-    transform: translateY(100px);
-    transition: all 0.5s cubic-bezier(.49,-0.09,0,1.11);
-  }
-  .header__left {
-    background-color: $blue;
-    padding: 20px;
+}
+
+.log {
+  .created_date {
+    font-size: 14px;
   }
 }

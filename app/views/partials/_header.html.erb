@@ -1,0 +1,14 @@
+
+<nav id="header" class="navbar bg-light navbar-light border-bottom mb-4">
+  <div class="logo-wrapper">
+    <%= link_to root_path do %>
+      <%= image_tag 'logo.svg' %>
+    <% end %>
+  </div>
+  <% if user_signed_in? %>
+    <%= render 'partials/logged_nav' %>
+  <% else %>
+    <%= render 'partials/not_logged_nav' %>
+  <% end %>
+  </div>
+</nav>
