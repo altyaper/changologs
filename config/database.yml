@@ -25,4 +25,10 @@ test:
 
 production:
   <<: *default
-  database: log_production
+  host: localhost
+  adapter: postgresql
+  encoding: utf8
+  database: <%= ENV['LOG_DATABASE_NAME'] %>
+  pool: 5
+  username: <%= ENV['LOG_DATABASE_USER'] %>
+  password: <%= ENV['LOG_DATABASE_PASSWORD'] %>
