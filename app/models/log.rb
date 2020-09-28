@@ -1,7 +1,7 @@
 class Log < ApplicationRecord
   belongs_to :user
 
-  has_many :taggings
+  has_many :taggings, dependent: :delete_all
   has_many :tags, through: :taggings
   
   validates :title, presence: true, length: { minimum: 5 }

@@ -15,8 +15,8 @@
 //= require turbolinks
 //= require jquery
 //= require popper
+//= require bootstrap-tagsinput
 //= require bootstrap
 //= require summernote/summernote-bs4.min
 //= require summernote-init
-//= require bootstrap-tagsinput
 //= require_tree .

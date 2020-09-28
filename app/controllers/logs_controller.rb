@@ -29,7 +29,6 @@ class LogsController < ApplicationController
 
   def update
     @log = Log.find(params[:id])
-    
     if @log.update(log_params)
       redirect_to @log
     else
@@ -39,7 +38,7 @@ class LogsController < ApplicationController
   
   def destroy
     @log = Log.find(params[:id])
-    @log.destroy!
+    @log.destroy
     redirect_to logs_path
   end
 
