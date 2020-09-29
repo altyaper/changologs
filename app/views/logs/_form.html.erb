@@ -22,21 +22,9 @@
           <%= form.text_field :tag_list, 'data-role'=>'tagsinput', class: 'form-control' %>
         </div>
 
-        <div class="form-group">
-          <%= form.label :color %>
-          <input type='hidden' name="log[color]" value="#00000020" id="color-input" />
-          <div class="color-select d-flex">
-            <div class="color-select__color color-select__color-0 mr-2 selected" data-color="#00000020"></div>
-            <div class="color-select__color color-select__color-1" data-color="#ffcfcf"></div>
-            <div class="color-select__color color-select__color-2 mx-2" data-color="#e1feff"></div>
-            <div class="color-select__color color-select__color-3" data-color="#FFF740"></div>
-            <div class="color-select__color color-select__color-4 ml-2" data-color="#DB5F5D"></div>
-          </div>
-        </div>
-
         <div class="form-group text-right">
           <%= form.submit class: 'btn btn-primary d-block btn-block' %>
-          <%= link_to 'Cancel', root_path, class: 'btn btn-secondary d-block btn-block' %>
+          <%= link_to 'Cancel', board_path(@board), class: 'btn btn-secondary d-block btn-block' %>
         </div>
 
     </div>

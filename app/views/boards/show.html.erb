@@ -6,9 +6,19 @@
     </div>
     <div class="col-md-6 text-right">
       <div class="items-actions">
-        <%= link_to edit_board_path(@board) do %>
-          <i class="fa fa-edit"></i>
-        <% end %>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ...
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">          
+          <%= link_to edit_board_path(@board), class: 'dropdown-item' do %>
+            <span>Edit board</span>
+          <% end %>
+          <%= link_to board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' do %>
+            <span>Delete board</span>
+          <% end %>
+        </div>
+      </div>
       </div>
     </div>
     <div class='col-md-4 my-4'>

@@ -1,6 +1,6 @@
 class LogsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_board, only: [:update, :create, :index, :show, :edit, :new]
+  before_action :set_board, only: [:update, :create, :index, :show, :edit, :new, :destroy]
 
   def set_board
     @board = Board.find(params[:board_id])
@@ -46,11 +46,11 @@ class LogsController < ApplicationController
   def destroy
     @log = Log.find(params[:id])
     @log.destroy
-    redirect_to board_logs_path
+    redirect_to board_path(@board)
   end
 
   private
     def log_params
-      params.require(:log).permit(:title, :text, :tag_list, :color, :board_id)
+      params.require(:log).permit(:title, :text, :tag_list, :board_id)
     end
 end

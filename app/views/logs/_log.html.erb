@@ -13,8 +13,6 @@
       <h5 class="card-title"><%= log.title %></h5>
       <div class="py-1 border-bottom"></div>
       <p class="card-text"><%= sanitize log.text %></p>
-      <div class="py-1 border-bottom"></div>
-      <p class="card-text mt-2"><%= log.user.full_name %></p>
       <div>
         <% log.tags.each do |tag| %>
           <div class="badge badge-primary"><%= tag.name %></div>
