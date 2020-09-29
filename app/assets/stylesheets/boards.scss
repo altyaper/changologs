@@ -1,0 +1,15 @@
+// Place all the styles related to the Boards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.board-wrapper {
+  transition: all 0.3s ease;
+  transform: scale(1);
+  &:hover {
+    transform: scale(0.99);
+  }
+  .board-wrapper__board-item {
+    min-height: 300px;
+  }
+}

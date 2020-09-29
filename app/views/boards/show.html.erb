@@ -1,0 +1,31 @@
+<%= render 'partials/header' %>
+<div class='container border p-4'>
+  <div class="row">
+    <div class="col-md-6">
+      <h1><%= @board.name %></h1>
+    </div>
+    <div class="col-md-6 text-right">
+      <div class="items-actions">
+        <%= link_to edit_board_path(@board) do %>
+          <i class="fa fa-edit"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class='col-md-4 my-4'>
+      <div class='card p-2 shadow-sm'>
+        <%= link_to new_board_log_path(@board) do %>
+          <div class="card-body text-center">
+            <i class="fa fa-plus"></i>
+            <span>New log</span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <% if @board.logs.any? %>
+    <div class='row'>
+      <%= render @board.logs %>
+    </div>
+  <% end %>
+</div>

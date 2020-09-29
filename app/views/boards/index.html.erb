@@ -1,0 +1,51 @@
+<%= render 'partials/header' %>
+<div class='container border p-4'>
+  <div class='row'>
+    <div class='col-md-12'>
+
+      <div class='row'>
+        <div class='col-md-6'>
+          <h1>Listing boards</h1>
+        </div>
+        <div class='col-md-6 text-right'>
+          <%= link_to 'New board', new_board_path, class: 'btn btn-primary mb-2' %>          
+        </div>
+      </div>
+
+      <table class='table'>
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col" class="text-center">Private</th>
+            <th scope="col" class="text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @boards.each do |board| %>
+            <tr>
+              <td><%= board.name %></td>
+              <td class="text-center">
+                <% if board.is_private %>
+                  <i class="fa fa-eye-slash"></i>
+                <% else %>
+                  <i class="fa fa-eye"></i>
+                <% end %>
+              </td>
+              <td class="text-right">
+                <%= link_to board_path(board), class: "badge badge-success" do %>
+                  <i class="fa fa-eye"></i>
+                <% end %>
+                <%= link_to edit_board_path(board), class: "badge badge-primary" do %>
+                  <i class="fa fa-edit"></i>
+                <% end %>
+                <%= link_to board_path(board), class: "badge badge-danger", method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="fa fa-trash"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
