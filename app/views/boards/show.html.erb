@@ -1,34 +1,21 @@
 <%= render 'partials/header' %>
 <div class='container border p-4'>
-  <div class="row">
+  <div class="row border-bottom mb-4">
     <div class="col-md-6">
       <h1><%= @board.name %></h1>
     </div>
     <div class="col-md-6 text-right">
       <div class="items-actions">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          ...
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">          
-          <%= link_to edit_board_path(@board), class: 'dropdown-item' do %>
-            <span>Edit board</span>
-          <% end %>
-          <%= link_to board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' do %>
-            <span>Delete board</span>
-          <% end %>
-        </div>
-      </div>
-      </div>
-    </div>
-    <div class='col-md-4 my-4'>
-      <div class='card p-2 shadow-sm'>
-        <%= link_to new_board_log_path(@board) do %>
-          <div class="card-body text-center">
-            <i class="fa fa-plus"></i>
-            <span>New log</span>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            ...
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to 'New log', new_board_log_path(@board), class: 'dropdown-item' %>
+            <%= link_to 'Edit board', edit_board_path(@board), class: 'dropdown-item' %>
+            <%= link_to 'Delete board', board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -16,4 +16,8 @@ class Log < ApplicationRecord
     self.tags = tag_names.collect { |name| Tag.find_or_create_by(name: name) }
   end
 
+  def self.search(search)
+    search ? where('lower(title) LIKE ?', "%#{search.downcase}%") : all
+  end
+
 end

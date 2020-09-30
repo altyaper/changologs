@@ -49,8 +49,12 @@ class LogsController < ApplicationController
     redirect_to board_path(@board)
   end
 
+  def search
+    @logs = Log.search(params[:search])
+  end
+
   private
     def log_params
-      params.require(:log).permit(:title, :text, :tag_list, :board_id)
+      params.require(:log).permit(:title, :text, :tag_list, :board_id, :search)
     end
 end

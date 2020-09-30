@@ -1,0 +1,19 @@
+<%= render 'partials/header' %>
+<div class='container border p-4'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <% if @logs.empty? %>
+        <div class="jumbotron jumbotron-fluid border rounded mt-3">
+          <div class="container">
+            <h4 class="text-center">No logs found for word '<%= params[:search] %>'</h4>
+          </div>
+        </div>
+      <% else %>
+        <h1 class="mb-4">We found some logs:</h1>
+        <div class="row">
+          <%= render @logs %> 
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
