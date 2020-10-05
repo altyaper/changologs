@@ -14,6 +14,7 @@
             <%= link_to 'New log', new_board_log_path(@board), class: 'dropdown-item' %>
             <%= link_to 'Edit board', edit_board_path(@board), class: 'dropdown-item' %>
             <%= link_to 'Delete board', board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
+            <%= link_to 'Share', board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
           </div>
         </div>
       </div>
@@ -23,6 +24,12 @@
   <% if @board.logs.any? %>
     <div class='row'>
       <%= render @board.logs %>
+    </div>
+  <% else %>
+    <div class="jumbotron jumbotron-fluid border rounded">
+      <div class="container">
+        <h4 class="text-center">You don't have any logs yet</h4>
+      </div>
     </div>
   <% end %>
 </div>

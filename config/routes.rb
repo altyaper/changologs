@@ -3,11 +3,17 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#index'
 
-  get '/public', to: 'welcome#public'
   get '/logs/search', to: 'logs#search'
-
-  resources :users, only: [:show]
+  get '/users/:user_id/friend', to: 'users#friend_request'
+  get '/profile', to: 'users#show'
   
+  scope 'api' do
+    get '/users/search_friends', to: 'users#search_friends'
+    post '/friends', to: 'friendship#friendship'
+    resources :friend_requests
+  end 
+
+  resources :friends
   resources :boards do
     resources :logs
   end

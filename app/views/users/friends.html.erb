@@ -1,0 +1,20 @@
+<div class="row border-bottom mb-4">
+  <div class="col-md-6">
+    <h1>Team</h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <div class="items-actions">
+      <div class="dropdown">
+        <%= link_to 'Add teammate', new_friend_path, class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>
+<ul class="list-group">
+  <% @user.friendships.map do |friend| %>
+    <li class="list-group-item d-flex align-items-center">
+      <span class="mr-auto"><%= friend.friend_b.full_name %></span>
+      <button class="btn btn-danger">Remove</button>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,16 @@
+<div class="row border-bottom mb-4">
+  <div class="col-md-6">
+    <h1>Profile</h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <div class="items-actions">
+      <%= link_to edit_user_registration_path, class: 'btn btn-primary' do %>
+        <span>Edit profile</span>
+      <% end %>
+    </div>
+  </div>
+</div>
+<ul class="list-group">
+  <li class="list-group-item"><%= @user.full_name %></li>
+  <li class="list-group-item"><%= @user.email %>  </li>
+</ul>
