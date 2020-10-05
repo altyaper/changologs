@@ -3,16 +3,16 @@
 
 $(document).ready(function() {
 
-  const validateEmail = (email) => {
+  const validateEmail = function(email) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
 
-  $("#friend-request-input").on('keyup', event => {
+  $("#friend-request-input").on('keyup', function(event) {
     const { value } = event.target;
     if (value.length < 4) return;
     // if (!validateEmail(value)) return;
-    $.get(`/api/users/search_friends?q=${value}`, data => {
+    $.get(`/api/users/search_friends?q=${value}`, function(data) {
       $("#possible-friends-list").html('');
       for (let i = 0; i < data.length; i++) {
         const user = data[i];
