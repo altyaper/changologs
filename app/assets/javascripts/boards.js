@@ -14,7 +14,7 @@ $(document).ready(function() {
     $.get('/api/friends', function(data) {
       friends = data;
       for (var i = 0; i < data.length; i++) {
-        const friend = data[i];
+        var friend = data[i];
         $('#shareModal #list-friends').append('<li class="list-group-item d-flex align-items-center"><span class="mr-auto">'+ friend.first_name + ' '+ friend.last_name +'</span><button data-user-selected="false" data-user-id="'+ friend.id +'" data-user-index-id="'+ i +'" class="btn btn-primary">Add</button></li>')
       }
     });
@@ -36,7 +36,7 @@ $(document).ready(function() {
       
       var tags = $('#shareModal .selected-friends div');
       var selectedTag = $(this).data('user-id');
-      for (let i = 0; i < tags.length; i++) {
+      for (var i = 0; i < tags.length; i++) {
         var tag = tags[i];
         var userId = $(tag).attr('data-user-id');
         if (userId == selectedTag) {
