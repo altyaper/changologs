@@ -26,6 +26,8 @@ class User < ApplicationRecord
 
   has_many :friend_bs, through: :friendships_as_friend_a
 
+  has_many :user_boards
+
   scope :search, -> (search, id) {
     where('lower(email) LIKE ? AND id != ?', "%#{search.downcase}%", id)
   }

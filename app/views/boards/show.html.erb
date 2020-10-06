@@ -17,7 +17,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="share-board-button">Share</button>
+        <button type="button" class="btn btn-primary" id="share-board-button" data-board-id="<%= @board.id %>">Share</button>
       </div>
     </div>
   </div>
@@ -36,9 +36,11 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <%= link_to 'New log', new_board_log_path(@board), class: 'dropdown-item' %>
-            <%= link_to 'Edit board', edit_board_path(@board), class: 'dropdown-item' %>
-            <%= link_to 'Delete board', board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
-            <button class='dropdown-item' data-toggle="modal" data-target="#shareModal" id="share-board-button">Share</button>
+            <% if @board.owner?(current_user) %>
+              <%= link_to 'Edit board', edit_board_path(@board), class: 'dropdown-item' %>
+              <%= link_to 'Delete board', board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
+              <button class='dropdown-item' data-toggle="modal" data-target="#shareModal" id="share-board-button">Share</button>
+            <% end %>
           </div>
         </div>
       </div>

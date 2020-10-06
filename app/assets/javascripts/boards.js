@@ -48,7 +48,8 @@ $(document).ready(function() {
 
     $("#share-board-button").on('click', function() {
       var ids = selectedFriends.map(function(value) { return value.id });
-      $.post('/api/boards/share', { ids: ids})
+      var board_id = $(this).data('board-id');
+      $.post('/api/boards/share', { ids: ids, board_id: board_id })
         .done(function(data) {
           console.log('finished');
         });

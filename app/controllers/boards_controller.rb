@@ -3,11 +3,14 @@ class BoardsController < ApplicationController
   before_action :set_board, only: [:edit, :update, :destroy, :show]
   skip_before_action :verify_authenticity_token, only: [:share]
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   def index
     @boards = Board.all.where(user_id: current_user.id).order(created_at: :desc)
   end
   
   def show
+    authorize @board
   end
 
   def new
@@ -46,8 +49,22 @@ class BoardsController < ApplicationController
 
   def share
     user_ids = params[:ids]
-    render json: []
+    board_id = params[:board_id]
+    responses = []
+    user_ids.each do |user_id|
+      relation = UserBoard.new
+      relation.user_id = user_id
+      relation.board_id = board_id
+      responses.push(relation.save!)
+    end
+    render json: responses
   end
+
+  private
+    def user_not_authorized
+      flash[:alert] = 'You are not authorized to perform this action.'
+      redirect_to(request.referrer || root_path)
+    end
 
   private
     def board_params

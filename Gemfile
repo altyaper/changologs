@@ -77,3 +77,5 @@ gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'bootstrap-tagsinput-rails'
+
+gem "pundit"

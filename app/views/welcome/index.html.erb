@@ -1,14 +1,20 @@
 <%= render 'partials/header' %>
 <div class='container'>
+  <h3>My boards</h3>
   <% if @boards.empty? %>
-    <div class="jumbotron jumbotron-fluid border rounded">
-      <div class="container">
-        <h4 class="text-center">You don't have any logs yet</h4>
-      </div>
+    <%= render partial: 'partials/empty', locals: { message: "You don't have any logs yet" } %>
+  <% else %>
+    <div class='row'>
+      <%= render @boards %>
     </div>
   <% end %>
-
-  <div class='row'>
-    <%= render @boards %>
-  </div>
+  <div class="my-3 border-bottom"></div>
+  <h3>Shared with you</h3>
+  <% if @sharedBoards.empty? %>
+    <%= render partial: 'partials/empty', locals: { message: "You don't have any logs yet" } %>
+  <% else %>
+    <div class='row'>
+      <%= render @sharedBoards %>
+    </div>
+  <% end %>
 </div>

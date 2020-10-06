@@ -3,7 +3,7 @@ class FriendshipController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    friends = User.find(current_user.id).friendships.map(&:friend_b) 
+    friends = User.find(current_user.id).friendships_as_friend_a.map(&:friend_b)
     render json: friends
   end
 

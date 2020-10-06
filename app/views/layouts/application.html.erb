@@ -12,7 +12,12 @@
   </head>
 
   <body>
-      <%= yield %>
-      <footer class='position-fixed border-top bg-primary text-white'>Copyright ®changologs</footer>
+    <% flash.each do |key, value| %>
+      <div class="mb-0 <%= flash_class(key.to_sym) %>">
+        <%= value %>
+      </div>
+    <% end %>
+    <%= yield %>
+    <footer class='position-fixed border-top bg-primary text-white'>Copyright ®changologs</footer>
   </body>
 </html>
