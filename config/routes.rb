@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   
   scope 'api' do
     get '/users/search_friends', to: 'users#search_friends'
+    get '/friends', to: 'friendship#index'
     post '/friends', to: 'friendship#friendship'
     resources :friend_requests
   end 

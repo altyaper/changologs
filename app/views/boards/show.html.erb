@@ -1,3 +1,27 @@
+<!-- Modal -->
+<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="shareModalLabel">Share board</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="selected-friends d-flex mb-3">
+        </div>
+        <ul id="list-friends" class="list-group">
+          
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="share-board-button">Share</button>
+      </div>
+    </div>
+  </div>
+</div>
 <%= render 'partials/header' %>
 <div class='container border p-4'>
   <div class="row border-bottom mb-4">
@@ -14,7 +38,7 @@
             <%= link_to 'New log', new_board_log_path(@board), class: 'dropdown-item' %>
             <%= link_to 'Edit board', edit_board_path(@board), class: 'dropdown-item' %>
             <%= link_to 'Delete board', board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
-            <%= link_to 'Share', board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
+            <button class='dropdown-item' data-toggle="modal" data-target="#shareModal" id="share-board-button">Share</button>
           </div>
         </div>
       </div>

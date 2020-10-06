@@ -2,6 +2,11 @@ class FriendshipController < ApplicationController
   before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
 
+  def index
+    friends = User.find(current_user.id).friendships.map(&:friend_b) 
+    render json: friends
+  end
+
   def friendship
     friendship = Friendship.new
     friendship.friend_a_id = current_user.id
@@ -17,4 +22,6 @@ class FriendshipController < ApplicationController
       end
     end
   end
+
+
 end

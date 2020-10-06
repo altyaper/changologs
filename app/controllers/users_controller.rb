@@ -17,4 +17,5 @@ class UsersController < ApplicationController
     users = User.search(query, id).where.not(id: user_ids)
     render json: users
   end
+
 end

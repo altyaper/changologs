@@ -10,11 +10,15 @@
     </div>
   </div>
 </div>
-<ul class="list-group">
-  <% @user.friendships.map do |friend| %>
-    <li class="list-group-item d-flex align-items-center">
-      <span class="mr-auto"><%= friend.friend_b.full_name %></span>
-      <button class="btn btn-danger">Remove</button>
-    </li>
-  <% end %>
-</ul>
+<% if @user.friendships.present? %>
+  <ul class="list-group">
+    <% @user.friendships.map do |friend| %>
+      <li class="list-group-item d-flex align-items-center">
+        <span class="mr-auto"><%= friend.friend_b.full_name %></span>
+        <button class="btn btn-danger">Remove</button>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <%= render partial: 'partials/empty', locals: { message: "You don't have any friends yet, :(" } %>
+<% end %>
