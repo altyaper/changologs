@@ -1,15 +1,10 @@
 <%= form_with model: @friend_request, url: friends_path, local: true do |form| %>
-  
   <div class="row">
     <div class="col-md-8">
-    
       <div class="form-group">
         <%= form.label :email %><br>
         <%= form.text_field :email, id: "friend-request-input", class: 'form-control', placeholder: 'Search by email' %>
       </div>
-
     </div>
   </div>
-
- 
 <% end %>

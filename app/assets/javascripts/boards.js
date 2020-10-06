@@ -51,7 +51,7 @@ $(document).ready(function() {
       var board_id = $(this).data('board-id');
       $.post('/api/boards/share', { ids: ids, board_id: board_id })
         .done(function(data) {
-          console.log('finished');
+          $("#shareModal").modal('hide');
         });
     });
   });
