@@ -1,20 +1,22 @@
 <%= render 'partials/header' %>
 <div class='container'>
-  <h3>My boards</h3>
-  <% if @boards.empty? %>
-    <%= render partial: 'partials/empty', locals: { message: "You don't have any logs yet" } %>
-  <% else %>
-    <div class='row'>
-      <%= render @boards %>
-    </div>
-  <% end %>
-  <div class="my-3 border-bottom"></div>
-  <h3>Shared with you</h3>
-  <% if @sharedBoards.empty? %>
-    <%= render partial: 'partials/empty', locals: { message: "You don't have any logs yet" } %>
-  <% else %>
-    <div class='row'>
-      <%= render @sharedBoards %>
-    </div>
-  <% end %>
+  <div class="border p-3">
+    <h3>My boards</h3>
+    <% if @boards.empty? %>
+      <%= render partial: 'partials/empty', locals: { message: "You don't have any logs yet" } %>
+    <% else %>
+      <div class='row'>
+        <%= render @boards %>
+      </div>
+    <% end %>
+    <div class="my-3 border-bottom"></div>
+    <h3>Shared with you</h3>
+    <% if @sharedBoards.empty? %>
+      <%= render partial: 'partials/empty', locals: { message: "You don't have any logs yet" } %>
+    <% else %>
+      <div class='row'>
+        <%= render @sharedBoards %>
+      </div>
+    <% end %>
+  </div>
 </div>

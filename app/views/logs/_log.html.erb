@@ -12,7 +12,9 @@
       <span class='created_date'><%= log.created_at.to_date.strftime("%B, %d, %Y") %></span>
       <h5 class="card-title"><%= log.title %></h5>
       <div class="py-1 border-bottom"></div>
-      <p class="card-text"><%= sanitize log.text %></p>
+      <div class='hide-<%= log.is_private %>'>
+        <p class="card-text"><%= sanitize log.text %></p>
+      </div>
       <div>
         <% log.tags.each do |tag| %>
           <div class="badge badge-primary"><%= tag.name %></div>

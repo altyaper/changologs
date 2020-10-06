@@ -29,6 +29,14 @@
 }
 
 .log {
+  &:hover {
+    & .hide-true {
+      filter: blur(0px);
+    }
+  }
+  .hide-true {
+    filter: blur(4px);
+  }
   .card {
     background-color: #f9f9f9;
   }

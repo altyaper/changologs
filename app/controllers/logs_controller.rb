@@ -55,6 +55,6 @@ class LogsController < ApplicationController
 
   private
     def log_params
-      params.require(:log).permit(:title, :text, :tag_list, :board_id, :search)
+      params.require(:log).permit(:title, :text, :tag_list, :board_id, :search, :is_private)
     end
 end
