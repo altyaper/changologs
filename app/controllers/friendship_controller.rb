@@ -3,7 +3,10 @@ class FriendshipController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    friends = User.find(current_user.id).friendships_as_friend_b.map(&:friend_a)
+    friendships = User.find(current_user.id).friendships
+    user_ids = friendships.pluck(:friend_a_id, :friend_b_id).flatten
+    user_ids.delete(current_user.id)
+    friends = User.where(id: user_ids)
     render json: friends
   end
 
