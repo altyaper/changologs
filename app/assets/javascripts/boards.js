@@ -47,8 +47,9 @@ $(document).ready(function() {
     });
 
     $("#share-board-button").on('click', function() {
-      $.post('/api/friendship', { users: selectedFriends })
-        .done(function() {
+      var ids = selectedFriends.map(function(value) { return value.id });
+      $.post('/api/boards/share', { ids: ids})
+        .done(function(data) {
           console.log('finished');
         });
     });

@@ -1,6 +1,7 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_board, only: [:edit, :update, :destroy, :show]
+  skip_before_action :verify_authenticity_token, only: [:share]
 
   def index
     @boards = Board.all.where(user_id: current_user.id).order(created_at: :desc)
@@ -41,6 +42,11 @@ class BoardsController < ApplicationController
 
   def set_board
     @board = Board.find(params[:id])
+  end
+
+  def share
+    user_ids = params[:ids]
+    render json: []
   end
 
   private
