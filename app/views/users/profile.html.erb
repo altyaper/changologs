@@ -11,6 +11,12 @@
   </div>
 </div>
 <ul class="list-group">
-  <li class="list-group-item"><%= @user.full_name %></li>
-  <li class="list-group-item"><%= @user.email %>  </li>
+  <li class="list-group-item d-flex">
+    <span class="mr-auto">Name:</span>
+    <span><%= @user.full_name %></span>
+  </li>
+  <li class="list-group-item d-flex">
+    <span class="mr-auto">Email:</span>
+    <span><%= @user.email %></span
+  </li>
 </ul>
