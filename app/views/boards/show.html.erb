@@ -12,7 +12,7 @@
         <div class="selected-friends d-flex mb-3">
         </div>
         <ul id="list-friends" class="list-group">
-          
+          <div class='card p-3'>No teammates added to your team</div>
         </ul>
       </div>
       <div class="modal-footer">
@@ -32,7 +32,7 @@
       <div class="items-actions">
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            ...
+            Menu
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <%= link_to 'New log', new_board_log_path(@board), class: 'dropdown-item' %>
@@ -58,4 +58,31 @@
       </div>
     </div>
   <% end %>
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Board information
+          </button>
+        </h2>
+      </div>
+
+      <div id="collapseOne" class="collapse hidden" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <span><strong>Created by:</strong> <%= @board.user.full_name %></span>
+              <div><span><strong>Shared with:</span></div>
+              <ul>
+                <% @board.user_boards.each do |user_board|%>
+                  <li><%= user_board.user.full_name %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

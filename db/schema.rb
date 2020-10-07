@@ -71,8 +71,9 @@ ActiveRecord::Schema.define(version: 2020_10_06_071824) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "color"
     t.bigint "board_id"
-    t.boolean "is_private"
+    t.boolean "is_private", default: false
     t.index ["board_id"], name: "index_logs_on_board_id"
     t.index ["user_id"], name: "index_logs_on_user_id"
   end

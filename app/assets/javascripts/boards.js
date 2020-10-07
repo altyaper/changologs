@@ -1,6 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-$(document).ready(function() {
+$( document ).on('turbolinks:load', function() {
 
   $("#shareModal").on('hidden.bs.modal', function() {
     $('#shareModal #list-friends').html('');
@@ -13,6 +13,9 @@ $(document).ready(function() {
 
     $.get('/api/friends', function(data) {
       friends = data;
+      if (friends.length) {
+        $('#shareModal #list-friends').html('');
+      }
       for (var i = 0; i < data.length; i++) {
         var friend = data[i];
         $('#shareModal #list-friends').append('<li class="list-group-item d-flex align-items-center"><span class="mr-auto">'+ friend.first_name + ' '+ friend.last_name +'</span><button data-user-selected="false" data-user-id="'+ friend.id +'" data-user-index-id="'+ i +'" class="btn btn-primary">Add</button></li>')
