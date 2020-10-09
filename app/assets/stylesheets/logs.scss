@@ -34,6 +34,10 @@
       filter: blur(0px);
     }
   }
+  .card__content {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
   .hide-true {
     filter: blur(4px);
   }

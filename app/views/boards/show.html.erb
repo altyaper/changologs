@@ -49,7 +49,7 @@
 
   <% if @board.logs.any? %>
     <div class='row'>
-      <%= render @board.logs %>
+      <%= render @board.logs.order(created_at: :desc) %>
     </div>
   <% else %>
     <div class="jumbotron jumbotron-fluid border rounded">
