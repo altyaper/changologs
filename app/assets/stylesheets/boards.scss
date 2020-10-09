@@ -4,12 +4,35 @@
 
 
 .board-wrapper {
-  transition: all 0.3s ease;
-  transform: scale(1);
-  &:hover {
-    transform: scale(0.99);
-  }
   .board-wrapper__board-item {
-    min-height: 100px;
+    min-height: 150px;
+    .board-actions {
+      z-index: 1;
+      right: 0;
+      .dropdown-toggle {
+        text-align: center;
+        background-color: transparent;
+        border: none;
+        &:focus {
+          border: 0;
+          outline: none;
+          box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+        }
+        span {
+          width: 3px;
+          height: 3px;
+          margin: 3px 0;
+          background-color: #fff;
+          border-radius: 50%;
+          display: block;
+        }
+        &:after {
+          display: none;
+        }
+      }
+      .dropdown-menu {
+        z-index: 2;
+      }
+    }
   }
 }

@@ -11,6 +11,7 @@
           <div class="badge badge-primary"><%= tag.name %></div>
         <% end %>
       </div>
+      <%= link_to 'Back to board', board_path(@board), class: 'btn btn-primary' %>
       <%= link_to 'Edit', edit_board_log_path(@board, @log), class: 'btn btn-primary' %>
     </div>
   </div>

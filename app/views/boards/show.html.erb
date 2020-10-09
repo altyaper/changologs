@@ -73,12 +73,14 @@
           <div class="row">
             <div class="col-md-12">
               <span><strong>Created by:</strong> <%= @board.user.full_name %></span>
-              <div><span><strong>Shared with:</span></div>
-              <ul>
-                <% @board.user_boards.each do |user_board|%>
-                  <li><%= user_board.user.full_name %></li>
-                <% end %>
-              </ul>
+              <% if @board.user_boards.present? %>
+                <div><span><strong>Shared with:</span></div>
+                <ul>
+                  <% @board.user_boards.each do |user_board|%>
+                    <li><%= user_board.user.full_name %></li>
+                  <% end %>
+                </ul>
+              <% end %>
             </div>
           </div>
         </div>
