@@ -1,0 +1,7 @@
+<h1>A new log was added to the dashboard <strong><%= @board.name %></strong></h1>
+
+<h3>Here is the log</h3>
+<p>
+  <%= @log.title %>
+  <%= sanitize @log.text %>
+</p>
