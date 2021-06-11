@@ -2,7 +2,10 @@
   <div class='card shadow-sm'>
     <div class="card-body position-relative">
       <div class="position-absolute p-2 text-right log-actions">
-        <%= link_to edit_board_log_path(log.board_id, log), class: "mr-1" do %>
+        <%= link_to board_log_path(log.board_id, log), class: "mr-1 badge badge-success" do %>
+          <i class="fa fa-eye"></i>
+        <% end %>
+        <%= link_to edit_board_log_path(log.board_id, log), class: "mr-1 badge badge-primary" do %>
           <i class="fa fa-edit"></i>
         <% end %>
         <%= link_to board_log_path(log.board_id, log), class: "badge badge-danger", method: :delete, data: { confirm: 'Are you sure?' } do %>
