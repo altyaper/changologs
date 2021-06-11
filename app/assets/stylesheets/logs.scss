@@ -38,6 +38,10 @@
     max-height: 300px;
     overflow-y: scroll;
   }
+
+  .card__content img {
+    max-width: 100%;
+  }
   .hide-true {
     filter: blur(4px);
   }
