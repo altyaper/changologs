@@ -15,7 +15,7 @@
       <span class='created_date'><%= log.created_at.to_date.strftime("%B, %d, %Y") %></span>
       <h5 class="card-title"><%= log.title %></h5>
       <div class="py-1 border-bottom"></div>
-      <div class='card__content my-2 hide-<%= log.is_private %>'>
+      <div class='card__content my-2 hide-<%= log.bluried %>'>
         <p class="card-text"><%= sanitize log.text %></p>
       </div>
       <div>

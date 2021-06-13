@@ -36,6 +36,7 @@ class LogsController < ApplicationController
   end
 
   def update
+    puts(log_params)
     @log = Log.find(params[:id])
     if @log.update(log_params)
       redirect_to board_log_path(@board, @log)
@@ -57,6 +58,6 @@ class LogsController < ApplicationController
 
   private
     def log_params
-      params.require(:log).permit(:title, :text, :tag_list, :board_id, :search, :is_private)
+      params.require(:log).permit(:title, :text, :tag_list, :board_id, :search, :is_private, :bluried)
     end
 end

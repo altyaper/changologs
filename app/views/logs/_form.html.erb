@@ -22,9 +22,14 @@
           <%= form.text_field :tag_list, 'data-role'=>'tagsinput', class: 'form-control' %>
         </div>
 
-        <div class="form-group">
+        <div class="form-check form-check-inline">
+          <%= form.check_box :is_private, class: "mr-2" %>
           <%= form.label :is_private %><br>
-          <%= form.check_box :is_private %>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <%= form.check_box :bluried, class: 'mr-2' %>
+          <%= form.label :bluried %><br>
         </div>
 
         <div class="form-group text-right">
