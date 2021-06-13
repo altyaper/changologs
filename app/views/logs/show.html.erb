@@ -2,10 +2,14 @@
 <div class='container border p-4'>
   <div class='row'>
     <div class='col-md-12'>
-       <h1><%= @log.title %></h1>
-      <p>
+      <div class='d-flex'>
+        <span class='date'>Created at: <%= @log.created_at.strftime("%Y-%m-%d") %></span>
+        <span class='ml-auto date'>Updated at: <%= @log.updated_at.strftime("%Y-%m-%d") %></span>
+      </div>
+      <h1><%= @log.title %></h1>
+      <main class='log-content'>
         <%= sanitize @log.text %>
-      </p>
+      </main>
       <div class="mb-4">
         <% @log.tags.each do |tag| %>
           <div class="badge badge-primary"><%= tag.name %></div>
