@@ -47,6 +47,7 @@ class LogsController < ApplicationController
   def destroy
     @log = Log.find(params[:id])
     @log.destroy
+    LogMailer.deleted_log(@log).deliver_now
     redirect_to board_path(@board)
   end
 

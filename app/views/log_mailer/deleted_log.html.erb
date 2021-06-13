@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,22 +18,12 @@
       <div class='text-center mb-2 pt-4'>
         <%= image_tag 'logo.svg' %>
       </div>
-      <p class='notification-title text-center mb-5'>A new log was added to the dashboard</p>
+      <p class='notification-title text-center mb-5'>A log has been deleted from the board</p>
       <h1><strong><%= @board.name %></strong></h1>
-      <hr>
       <p>
         <%= @log.title %>
         <%= sanitize @log.text %>
       </p>
-      <hr>
-      <div class='text-center'>
-        <%= link_to 'View board', board_url(@board), class: 'btn btn-primary' %>
-      </div>
-      <div>
-        <% @log.tags.each do |tag| %>
-          <div class="badge badge-primary"><%= tag.name %></div>
-        <% end %>
-      </div>
     </div>
   </body>
 </html>

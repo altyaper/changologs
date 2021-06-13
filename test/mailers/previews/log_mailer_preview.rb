@@ -7,4 +7,9 @@ class LogMailerPreview < ActionMailer::Preview
     LogMailer.new_log(log)
   end
 
+  def deleted_log
+    log = Log.last
+    LogMailer.deleted_log(log)
+  end
+
 end
