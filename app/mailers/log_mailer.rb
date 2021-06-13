@@ -13,7 +13,6 @@ class LogMailer < ApplicationMailer
   end
 
   def deleted_log(log)
-    @greeting = "Hi"
     @log = log
     @board = log.board
     mail to: @board.user.email
