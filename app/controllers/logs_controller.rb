@@ -1,6 +1,12 @@
 class LogsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:update, :create, :index, :edit, :new, :destroy]
+  before_action :authenticate!, only: [:show]
   before_action :set_board, only: [:update, :create, :index, :show, :edit, :new, :destroy]
+
+  def authenticate!
+    log = Log.find(params[:id])
+    authenticate_user! if log.is_private
+  end
 
   def set_board
     @board = Board.find(params[:board_id])
@@ -24,7 +30,7 @@ class LogsController < ApplicationController
     @log.board = @board;
     @log.user_id = current_user.id
     if @log.save!
-      LogMailer.new_log(@log).deliver_now
+      # LogMailer.new_log(@log).deliver_now
       redirect_to board_log_path(@board, @log)
     else
       render 'new'

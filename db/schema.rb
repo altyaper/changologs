@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_13_221032) do
+ActiveRecord::Schema.define(version: 2021_06_13_231301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2021_06_13_221032) do
     t.bigint "user_id"
     t.string "color"
     t.bigint "board_id"
-    t.boolean "is_private", default: false
+    t.boolean "is_private", default: true
     t.boolean "bluried", default: false
     t.index ["board_id"], name: "index_logs_on_board_id"
     t.index ["user_id"], name: "index_logs_on_user_id"
