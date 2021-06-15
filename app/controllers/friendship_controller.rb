@@ -19,6 +19,7 @@ class FriendshipController < ApplicationController
     
     if friend_request.destroy!
       if friendship.save!
+        FriendMailer.new_friendship(current_user, destination_user_id).deliver_now
         render json: friendship
       else
         render status: 403, json: { error: 'Invalid friendship'}

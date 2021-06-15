@@ -56,6 +56,7 @@ class BoardsController < ApplicationController
       relation.user_id = user_id
       relation.board_id = board_id
       responses.push(relation.save!)
+      BoardMailer.shared_board(relation).deliver_now
     end
     render json: responses
   end
