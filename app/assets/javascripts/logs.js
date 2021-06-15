@@ -2,6 +2,9 @@
 // All this logic will automatically be available in application.js.
 
 $( document ).on('turbolinks:load', function() {
+
+  new ClipboardJS('.copy-button');
+
   var cleanSelectedColors = function() {
     var colorTags = $('.color-select__color');
     for (var i = 0; i < colorTags.length; i++) {

@@ -30,7 +30,7 @@ class LogsController < ApplicationController
     @log.board = @board;
     @log.user_id = current_user.id
     if @log.save!
-      LogMailer.new_log(@log).deliver_now
+      LogMailer.new_log(@log).deliver_now unless @log.user_id != current_user.id
       redirect_to board_log_path(@board, @log)
     else
       render 'new'
