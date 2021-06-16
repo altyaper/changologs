@@ -31,8 +31,10 @@
           <div class="badge badge-primary"><%= tag.name %></div>
         <% end %>
       </div>
+      <% if user_signed_in? %>
       <%= link_to 'Back to board', board_path(@board), class: 'btn btn-primary' %>
       <%= link_to 'Edit', edit_board_log_path(@board, @log), class: 'btn btn-primary' %>
+      <% end %>
     </div>
 
     <div class='col-md-12'>
