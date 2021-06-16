@@ -73,6 +73,7 @@ GEM
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    clipboard-rails (1.7.1)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     devise (4.8.0)
@@ -226,6 +227,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chromedriver-helper
+  clipboard-rails
   devise
   devise-bootstrap-views (~> 1.0)
   font-awesome-rails

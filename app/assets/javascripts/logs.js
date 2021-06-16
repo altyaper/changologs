@@ -3,7 +3,7 @@
 
 $( document ).on('turbolinks:load', function() {
 
-  new ClipboardJS('.copy-button');
+  new Clipboard('.copy-button');
 
   var cleanSelectedColors = function() {
     var colorTags = $('.color-select__color');
