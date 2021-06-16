@@ -74,6 +74,8 @@ gem "font-awesome-rails"
 
 gem 'devise'
 
+gem 'ruby-progressbar', require: false
+
 gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'bootstrap-tagsinput-rails'

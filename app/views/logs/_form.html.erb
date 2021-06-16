@@ -23,7 +23,7 @@
         </div>
 
         <div class="flex-column form-check form-check-inline">
-          <%= form.check_box :is_private, { checked: true } %>
+          <%= form.check_box :is_private, { checked: @log.is_private } %>
           <%= form.label :is_private, 'Private', class: 'ml-2' %><br>
         </div>
 

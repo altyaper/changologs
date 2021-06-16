@@ -3,6 +3,11 @@
   <div class='row'>
     <div class='col-md-12'> 
       <div class='d-flex'>
+        <% if @log.is_private %>
+          <%= icon("eye-slash-fill", class: 'mr-1 text-secondary') %>
+        <% else%>
+          <%= icon("eye-fill", class: 'mr-1 text-secondary') %>
+        <% end %>
         <span class='date'>Created at: <%= @log.created_at.strftime("%B, %d, %Y") %></span>
         <% if @log.id %>
           <div class='ml-auto'>
