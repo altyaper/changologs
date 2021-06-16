@@ -2,11 +2,11 @@
 <div class='container border p-4'>
   <div class='row'>
     <div class='col-md-12'> 
-      <div class='d-flex'>
+      <div class='d-flex align-items-center'>
         <% if @log.is_private %>
-          <%= icon("eye-slash-fill", class: 'mr-1 text-secondary') %>
+          <%= image_tag("eye-slash-fill", width: 20, class: 'text-secondary mr-2 eye') %>
         <% else%>
-          <%= icon("eye-fill", class: 'mr-1 text-secondary') %>
+          <%= image_tag("eye-fill", width: 20, class: 'text-secondary mr-2 eye') %>
         <% end %>
         <span class='date'>Created at: <%= @log.created_at.strftime("%B, %d, %Y") %></span>
         <% if @log.id %>
