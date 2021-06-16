@@ -4,9 +4,9 @@
     <div class='col-md-12'> 
       <div class='d-flex align-items-center'>
         <% if @log.is_private %>
-          <%= image_tag("eye-slash-fill", width: 20, class: 'text-secondary mr-2 eye') %>
-        <% else%>
-          <%= image_tag("eye-fill", width: 20, class: 'text-secondary mr-2 eye') %>
+          <%= image_tag("eye-slash-fill.svg", width: 20, class: 'text-secondary mr-2 eye') %>
+        <% else %>
+          <%= image_tag("eye-fill.svg", width: 20, class: 'text-secondary mr-2 eye') %>
         <% end %>
         <span class='date'>Created at: <%= @log.created_at.strftime("%B, %d, %Y") %></span>
         <% if @log.id %>
