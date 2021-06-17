@@ -44,7 +44,7 @@ class BoardsController < ApplicationController
   end
 
   def set_board
-    @board = Board.find(params[:id])
+    @board = Board.find_by(hash_id: params[:id])
   end
 
   def share

@@ -1,4 +1,6 @@
 class Board < ApplicationRecord
+  include Friendlyable
+
   belongs_to :user
   has_many :logs, dependent: :delete_all
   has_many :user_boards

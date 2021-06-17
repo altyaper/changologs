@@ -83,3 +83,5 @@ gem 'devise-bootstrap-views', '~> 1.0'
 gem 'bootstrap-tagsinput-rails'
 
 gem "pundit"
+
+gem 'friendly_id', '~> 5.1.0'

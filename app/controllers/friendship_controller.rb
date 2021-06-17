@@ -4,6 +4,7 @@ class FriendshipController < ApplicationController
 
   def index
     friendships = User.find(current_user.id).friendships
+    shared_ids = UserBoard.where(board_id: params[:board_id]).map{|ub| ub.user_id }
     user_ids = friendships.pluck(:friend_a_id, :friend_b_id).flatten
     user_ids.delete(current_user.id)
     friends = User.where(id: user_ids)

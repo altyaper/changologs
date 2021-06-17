@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_13_231301) do
+ActiveRecord::Schema.define(version: 2021_06_17_072216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_06_13_231301) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "hash_id"
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_06_13_231301) do
     t.bigint "board_id"
     t.boolean "is_private", default: true
     t.boolean "bluried", default: false
+    t.string "hash_id"
     t.index ["board_id"], name: "index_logs_on_board_id"
     t.index ["user_id"], name: "index_logs_on_user_id"
   end

@@ -1,4 +1,6 @@
 class Log < ApplicationRecord
+  include Friendlyable
+  
   belongs_to :user
   belongs_to :board
 

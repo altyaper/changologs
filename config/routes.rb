@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/users/:user_id/friend', to: 'users#friend_request'
   get '/profile', to: 'users#show'
   
+  
   scope 'api' do
     get '/users/search_friends', to: 'users#search_friends'
     get '/friends', to: 'friendship#index'
@@ -14,8 +15,9 @@ Rails.application.routes.draw do
     post '/boards/share', to: 'boards#share'
     resources :friend_requests
   end 
-
+  
   resources :friends
+  resources :user_board
   resources :boards do
     resources :logs
   end

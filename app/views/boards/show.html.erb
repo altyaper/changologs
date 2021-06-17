@@ -24,7 +24,7 @@
 </div>
 <%= render 'partials/header' %>
 <div class='container border p-4'>
-  <div class="row border-bottom mb-4">
+  <div id="board-id" data-board-id="<%= @board.id %>" class="row border-bottom mb-4">
     <div class="col-md-6">
       <h1><%= @board.name %></h1>
     </div>
@@ -41,6 +41,10 @@
               <%= link_to 'Delete board', board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
               <button class='dropdown-item' data-toggle="modal" data-target="#shareModal" id="share-board-button">Share</button>
             <% end %>
+            <li><hr class="dropdown-divider"></li>
+            <% if !@board.owner?(current_user) %>
+              <%= link_to 'Leave board', user_board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
+            <% end%>
           </div>
         </div>
       </div>
@@ -77,7 +81,10 @@
                 <div><span><strong>Shared with:</span></div>
                 <ul>
                   <% @board.user_boards.each do |user_board|%>
-                    <li><%= user_board.user.full_name %></li>
+                    <li><%= user_board.user.full_name %> 
+                    <% if @board.owner?(current_user) %>
+                      <div class='btn text-secondary d-inline'><i class="fa fa-close"></i></div></li>
+                    <% end %>
                   <% end %>
                 </ul>
               <% end %>
