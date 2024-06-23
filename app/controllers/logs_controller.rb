@@ -30,7 +30,7 @@ class LogsController < ApplicationController
     @log.board = @board;
     @log.user_id = current_user.id
     if @log.save!
-      LogMailer.new_log(@log).deliver_now unless @log.user_id != current_user.id
+      # LogMailer.new_log(@log).deliver_now unless @log.user_id != current_user.id
       redirect_to board_log_path(@board, @log)
     else
       render 'new'
@@ -54,7 +54,7 @@ class LogsController < ApplicationController
   def destroy
     @log = Log.find_by(hash_id: params[:id])
     @log.destroy
-    LogMailer.deleted_log(@log).deliver_now
+    # LogMailer.deleted_log(@log).deliver_now
     redirect_to board_path(@board)
   end
 

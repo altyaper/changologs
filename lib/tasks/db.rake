@@ -33,7 +33,8 @@ def local_config
 end
 
 def remote_config
-  remote_config_file = YAML.load_file(Rails.root.join('config/database.yml.production'))
+  db_file = Rails.root.join('config/database.yml.production')
+  remote_config_file = YAML.load_file(db_file)
   remote_config = remote_config_file['defaults'].merge({dump_file: production_file()})
 end
 

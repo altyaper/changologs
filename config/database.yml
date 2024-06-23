@@ -12,7 +12,7 @@ development:
   encoding: unicode
   database: log_development
   pool: 5
-  username: postgres
+  username: jchavezpalma
   password: postgres
   timeout: 5000
 
