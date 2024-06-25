@@ -26,7 +26,6 @@ class LogsController < ApplicationController
   end
 
   def create
-    puts(ENV)
     @log = Log.create(log_params)
     @log.board = @board;
     @log.user_id = current_user.id
