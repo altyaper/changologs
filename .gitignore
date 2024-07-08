@@ -30,5 +30,3 @@
 .DS_Store
 
 config/database.yml.production
-
-.env

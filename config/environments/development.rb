@@ -34,13 +34,17 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # Delivery method
-  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.delivery_method = :smtp
 
-  config.action_mailer.mailgun_settings = {
-    api_key: ENV['CHANGOLOGS_MAILGUN_API_KEY'],
-    domain: ENV['CHANGOLOGS_MAILGUN_DOMAIN']
+  config.action_mailer.smtp_settings = {
+    address: "smtp.mailgun.org",
+    port: 587,
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["SMTP_USERNAME"],
+    password: ENV["SMTP_PASSWORD"]
   }
-  
+
   # Devise
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
