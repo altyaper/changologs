@@ -13,6 +13,9 @@
         text-align: center;
         background-color: transparent;
         border: none;
+        &:hover {
+          cursor: pointer;
+        }
         &:focus {
           border: 0;
           outline: none;
