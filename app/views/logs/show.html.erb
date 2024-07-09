@@ -24,7 +24,7 @@
       </div>
       <h1><%= @log.title %></h1>
       <main class='log-content'>
-        <%= sanitize @log.text %>
+        <%= sanitize @log.text, attributes: %w(style href) %>
       </main>
       <div class="mb-4">
         <% @log.tags.each do |tag| %>
