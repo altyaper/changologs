@@ -13,6 +13,7 @@ digitalocean:
   region: <%= ENV['DO_SPACE_REGION'] %>
   endpoint: https://<%= ENV['DO_SPACE_REGION'] %>.digitaloceanspaces.com
   bucket: <%= ENV['DO_SPACE_BUCKET'] %>
+  public: true
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:

@@ -17,7 +17,7 @@
     <%= link_to profile_path, class: 'btn btn-primary text-white' do %>
       <i class="fa fa-user mr-2"></i>
       <% if current_user.profile_picture.attached? %>
-        <%= image_tag current_user.profile_picture.variant(resize_to_limit: [150, 150]) %>
+        <%= image_tag url_for(current_user.profile_picture.variant(resize_to_limit: [150, 150])) %>
       <% else %>
         <p>No profile picture uploaded.</p>
       <% end %>
