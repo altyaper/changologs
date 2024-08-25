@@ -76,12 +76,24 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">
-              <span><strong>Created by:</strong> <%= @board.user.full_name %></span>
+              <span><strong>Created by:</strong>
+              <% if @board.user.profile_picture.attached? %>
+                <%= image_tag rails_blob_url(@board.user.profile_picture), class: "profile-picture" %>
+              <% else %>
+                <i class="fa fa-user mr-2"></i>
+              <% end %>
+              <span><%= @board.user.full_name %></span>
               <% if @board.user_boards.present? %>
                 <div><span><strong>Shared with:</span></div>
                 <ul>
                   <% @board.user_boards.each do |user_board|%>
-                    <li><%= user_board.user.full_name %> 
+                    <li>
+                    <% if user_board.user.profile_picture.attached? %>
+                      <%= image_tag rails_blob_url(user_board.user.profile_picture), class: "profile-picture" %>
+                    <% else %>
+                      <i class="fa fa-user mr-2"></i>
+                    <% end %>
+                    <%= user_board.user.full_name %> 
                     <% if @board.owner?(current_user) %>
                       <div class='btn text-secondary d-inline'><i class="fa fa-close"></i></div></li>
                     <% end %>

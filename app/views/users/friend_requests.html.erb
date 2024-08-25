@@ -12,6 +12,11 @@
   <ul class="list-group" id="friend-requests-list">
     <% @user.friend_requests_as_receiver.map do |friend_request| %>
       <li class="list-group-item d-flex align-items-center">
+        <% if friend_request.requestor.profile_picture_url.attached? %>
+          <%= image_tag rails_blob_url(friend_request.requestor.profile_picture_url), class: 'profile-picture' %>
+        <% else %>
+          <i class="fa fa-user mr-2"></i>
+        <% end %>
         <span class="mr-auto"><%= friend_request.requestor.full_name %></span>
         <button class="btn btn-primary" data-user-id="<%= friend_request.requestor.id %>">Accept</button>
       </li>
