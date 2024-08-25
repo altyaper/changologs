@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include ActiveModel::Serialization
+  include Rails.application.routes.url_helpers
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -33,6 +34,10 @@ class User < ApplicationRecord
   scope :search, -> (search, id) {
     where('lower(email) LIKE ? AND id != ?', "%#{search.downcase}%", id)
   }
+
+  def profile_picture_url
+    profile_picture.attached? ? rails_blob_path(profile_picture, only_path: true) : nil
+  end
 
   def full_name
     "#{first_name} #{last_name}"
