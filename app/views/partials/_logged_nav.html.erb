@@ -18,7 +18,7 @@
       <% if current_user.profile_picture.attached? %>
         <%= image_tag rails_blob_url(current_user.profile_picture), class: 'profile-picture' %>
       <% else %>
-        <p>No profile picture uploaded.</p>
+        <i class="fa fa-user mr-2"></i>
       <% end %>
       <%= current_user.full_name %>
     <% end %>

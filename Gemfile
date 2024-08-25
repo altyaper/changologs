@@ -83,3 +83,5 @@ gem 'bootstrap-tagsinput-rails'
 gem "pundit"
 
 gem 'friendly_id', '~> 5.1.0'
+
+gem 'active_model_serializers'

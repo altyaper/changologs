@@ -1,11 +1,12 @@
 class User < ApplicationRecord
+  include ActiveModel::Serialization
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :logs
-  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
+  has_many :logs
+  has_many :user_boards  
   has_one_attached :profile_picture
 
   has_many :friend_requests_as_requestor,
@@ -28,7 +29,6 @@ class User < ApplicationRecord
 
   has_many :friend_bs, through: :friendships_as_friend_a
 
-  has_many :user_boards
 
   scope :search, -> (search, id) {
     where('lower(email) LIKE ? AND id != ?', "%#{search.downcase}%", id)
@@ -41,5 +41,4 @@ class User < ApplicationRecord
   def friendships
     self.friendships_as_friend_a + self.friendships_as_friend_b
   end
-
 end
