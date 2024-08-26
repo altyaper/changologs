@@ -71,6 +71,10 @@ gem "wysiwyg-rails"
 gem "font-awesome-rails"
 
 gem 'devise'
+gem 'devise-jwt'
+gem 'jsonapi-serializer'
+
+gem 'rack-cors'
 
 gem 'clipboard-rails'
 

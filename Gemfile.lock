@@ -126,12 +126,24 @@ GEM
       responders
       warden (~> 1.2.3)
     devise-bootstrap-views (1.1.0)
+    devise-jwt (0.12.1)
+      devise (~> 4.0)
+      warden-jwt_auth (~> 0.10)
     domain_name (0.6.20240107)
     dotenv (3.1.2)
     dotenv-rails (3.1.2)
       dotenv (= 3.1.2)
       railties (>= 6.1)
     drb (2.2.1)
+    dry-auto_inject (1.0.1)
+      dry-core (~> 1.0)
+      zeitwerk (~> 2.6)
+    dry-configurable (1.2.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-core (1.0.1)
+      concurrent-ruby (~> 1.0)
+      zeitwerk (~> 2.6)
     erubi (1.13.0)
     execjs (2.9.1)
     ffi (1.17.0-arm64-darwin)
@@ -160,6 +172,10 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     jsonapi-renderer (0.2.2)
+    jsonapi-serializer (2.2.0)
+      activesupport (>= 4.2)
+    jwt (2.8.2)
+      base64
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -205,6 +221,8 @@ GEM
       activesupport (>= 3.0.0)
     racc (1.8.0)
     rack (2.2.9)
+    rack-cors (2.0.2)
+      rack (>= 2.0.0)
     rack-session (1.0.2)
       rack (< 3)
     rack-test (2.1.0)
@@ -294,6 +312,11 @@ GEM
       execjs (>= 0.3.0, < 3)
     warden (1.2.9)
       rack (>= 2.0.9)
+    warden-jwt_auth (0.10.0)
+      dry-auto_inject (>= 0.8, < 2)
+      dry-configurable (>= 0.13, < 2)
+      jwt (~> 2.1)
+      warden (~> 1.2)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -321,17 +344,20 @@ DEPENDENCIES
   clipboard-rails
   devise
   devise-bootstrap-views (~> 1.0)
+  devise-jwt
   dotenv-rails
   font-awesome-rails
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.5)
   jquery-rails
+  jsonapi-serializer
   listen
   mailgun-ruby (~> 1.2.6)
   pg
   psych (< 4)
   puma (~> 3.11)
   pundit
+  rack-cors
   rails (~> 7.1.3.4)
   ruby-progressbar
   sass-rails (~> 5.0)

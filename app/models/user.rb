@@ -1,10 +1,12 @@
 class User < ApplicationRecord
   include ActiveModel::Serialization
+  include Devise::JWT::RevocationStrategies::JTIMatcher
   include Rails.application.routes.url_helpers
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :jwt_authenticatable, jwt_revocation_strategy: self
 
   has_many :logs
   has_many :user_boards  
