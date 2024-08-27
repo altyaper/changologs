@@ -6,11 +6,35 @@ class BoardsController < ApplicationController
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
-    @boards = Board.all.where(user_id: current_user.id).order(created_at: :desc)
+    boards = Board.all.where(user_id: current_user.id).order(created_at: :desc)
+    sharedBoards = User.find(current_user.id).user_boards.map do |user_board| user_board.board end
+    respond_to do |format|
+      format.json {
+        render json: {
+          boards: boards,
+          sharedBoards: sharedBoards
+        }
+      }
+      format.html {
+        @boards = boards
+        @sharedBoards = sharedBoards
+      }
+    end
   end
   
   def show
-    authorize @board
+    respond_to do |format|
+      format.json {
+        logs = @board.logs.map{ |log| LogSerializer.new(log).serializable_hash[:data][:attributes] }
+        render json: {
+          board: @board,
+          logs: logs
+        }, status: :ok
+      }
+      format.html {
+        authorize @board
+      }
+    end
   end
 
   def new
@@ -20,10 +44,21 @@ class BoardsController < ApplicationController
   def create
     @board = Board.create(board_params)
     @board.user_id = current_user.id
-    if @board.save!
-      redirect_to boards_path
-    else
-      render 'new'
+    saved = @board.save!
+    respond_to do |format|
+      format.json {
+        render json: {
+          created: saved,
+          board: board_params
+        }, status: :ok
+      }
+      format.html {
+        if saved
+          redirect_to boards_path
+        else
+          render 'new'
+        end
+      }
     end
   end
 
@@ -31,16 +66,40 @@ class BoardsController < ApplicationController
   end
 
   def update
-    if @board.update(board_params)
-      redirect_to @board
-    else
-      render 'edit'
+    respond_to do |format|
+      format.json {
+        if @board.user_id === current_user.id
+          updated = @board.update(board_params)
+          render json: {
+            board: updated
+          }, status: :ok
+        else
+          render json: {
+            status: 401,
+            message: "Couldn't complete your request."
+          }, status: :unauthorized
+        end
+      }
+      format.html {
+        if @board.update(board_params)
+          redirect_to @board
+        else
+          render 'edit'
+        end
+      }
     end
   end
   
   def destroy
-    @board.destroy
-    redirect_to boards_path
+    respond_to do |format|
+      format.json {
+        @board.destroy
+      }
+      format.html {
+        @board.destroy
+        redirect_to boards_path
+      }
+    end
   end
 
   def set_board

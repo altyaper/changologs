@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'welcome#index'
+  root 'boards#index'
 
   get '/logs/search', to: 'logs#search'
   get '/users/:user_id/friend', to: 'users#friend_request'
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
     post '/friends', to: 'friendship#friendship'
     post '/boards/share', to: 'boards#share'
     resources :friend_requests
-  end 
+  end
   
   resources :friends
   resources :user_board

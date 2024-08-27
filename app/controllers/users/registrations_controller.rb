@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  include RackSessionsFix
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -10,9 +11,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def respond_with(current_user, _opts = {})
     respond_to do |format|
-      format.html {
-          super
-      }
       format.json {
         if resource.persisted?
           render json: {
@@ -24,6 +22,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
             status: {message: "User couldn't be created successfully. #{current_user.errors.full_messages.to_sentence}"}
           }, status: :unprocessable_entity
         end
+      }
+      format.html {
+        super
       }
     end
   end
