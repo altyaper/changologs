@@ -48,8 +48,7 @@ class BoardsController < ApplicationController
     respond_to do |format|
       format.json {
         render json: {
-          created: saved,
-          board: board_params
+          board: @board
         }, status: :ok
       }
       format.html {
@@ -94,6 +93,10 @@ class BoardsController < ApplicationController
     respond_to do |format|
       format.json {
         @board.destroy
+        render json: {
+          status: 204,
+          message: "Board deleted succesfully"
+        }, status: 204
       }
       format.html {
         @board.destroy

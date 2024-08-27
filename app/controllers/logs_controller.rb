@@ -13,7 +13,15 @@ class LogsController < ApplicationController
   end
 
   def index
-     @logs = Log.all.where(user_id: current_user.id).order(created_at: :desc)
+    @logs = Log.all.where(user_id: current_user.id).order(created_at: :desc)
+    respond_to do |format|
+      format.json {
+        render json: {
+          logs: @logs
+        }
+      }
+      format.html {}
+    end
   end
 
   def show
@@ -29,11 +37,27 @@ class LogsController < ApplicationController
     @log = Log.create(log_params)
     @log.board = @board;
     @log.user_id = current_user.id
-    if @log.save!
-      LogMailer.new_log(@log).deliver_now unless @log.user_id != current_user.id
-      redirect_to board_log_path(@board, @log)
-    else
-      render 'new'
+    respond_to do |format|
+      format.json {
+        if @log.save!
+          LogMailer.new_log(@log).deliver_now unless @log.user_id != current_user.id
+          render json: {
+            log: @log
+          }, status: :ok
+        else
+          render json: {
+            message: "Coultn't complete your request"
+          }, status: 401
+        end
+      }
+      format.html {
+        if @log.save!
+          LogMailer.new_log(@log).deliver_now unless @log.user_id != current_user.id
+          redirect_to board_log_path(@board, @log)
+        else
+          render 'new'
+        end
+      }
     end
   end
 

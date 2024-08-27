@@ -1,8 +1,9 @@
 
 <nav id="header" class="navbar bg-light navbar-light border-bottom mb-4">
   <div class="logo-wrapper">
-    <%= link_to root_path do %>
+    <%= link_to root_path, class: 'flex' do %>
       <%= image_tag 'logo.svg' %>
+      <h6 class="mt-3">Changologs</h6>
     <% end %>
   </div>
   <% if user_signed_in? %>
