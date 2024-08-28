@@ -87,7 +87,17 @@ class LogsController < ApplicationController
     @log = Log.find_by(hash_id: params[:id])
     @log.destroy
     LogMailer.deleted_log(@log).deliver_now
-    redirect_to board_path(@board)
+    respond_to do |format|
+      format.json {
+        render json: {
+          status: 204,
+          message: "Log deleted succesfully"
+        }, status: 204
+      }
+      format.html {
+        redirect_to board_path(@board)
+      }
+    end
   end
 
   def search
