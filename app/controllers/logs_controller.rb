@@ -76,10 +76,24 @@ class LogsController < ApplicationController
   def update
     @board = Board.find_by(hash_id: params[:board_id])
     @log = Log.find_by(hash_id: params[:id])
-    if @log.update(log_params)
-      redirect_to board_log_path(@board, @log)
-    else
-      render 'edit'
+
+    respond_to do |format|
+      format.json {
+        if @log.update(log_params)
+          redirect_to board_log_path(@board, @log)
+        else
+          render json: {
+            message: "User couldn't be created successfully."
+          }, status: :unprocessable_entity
+        end
+      }
+      format.html {
+        if @log.update(log_params)
+          redirect_to board_log_path(@board, @log)
+        else
+          render 'edit'
+        end
+      }
     end
   end
   
