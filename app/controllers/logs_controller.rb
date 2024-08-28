@@ -26,6 +26,14 @@ class LogsController < ApplicationController
 
   def show
     @log = Log.find_by(hash_id: params[:id])
+    respond_to do |format|
+      format.json {
+        render json: {
+          log: @log
+        }
+      }
+      format.html {}
+    end
   end
 
   def new
