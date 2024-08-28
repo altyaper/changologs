@@ -3,6 +3,15 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
+    respond_to do |format|
+      format.json {
+        render json: {
+          status: 200,
+          data: UserSerializer.new(@user).serializable_hash[:data][:attributes]
+        }, status: :ok
+      }
+      format.html {}
+    end
   end
 
   def search_friends
