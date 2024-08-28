@@ -84,6 +84,14 @@ class LogsController < ApplicationController
 
   def search
     @logs = Log.search(params[:search])
+    respond_to do |format|
+      format.json{
+        render json: {
+          logs: @logs
+        }
+      }
+      format.html {}
+    end
   end
 
   private

@@ -19,7 +19,7 @@ class Log < ApplicationRecord
   end
 
   def self.search(search)
-    search ? where('lower(title) LIKE ?', "%#{search.downcase}%") : all
+    search ? where('lower(title) LIKE ? OR lower(text) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%") : all
   end
 
 end
