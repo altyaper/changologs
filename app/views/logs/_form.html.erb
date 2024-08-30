@@ -32,6 +32,11 @@
           <%= form.label :bluried %><br>
         </div>
 
+        <div class="flex-column form-check form-check-inline">
+          <%= form.color_field :color, value: @log.color || "#f9f9f9", class: 'mr-2' %>
+          <%= form.label :color %><br>
+        </div>
+
         <div class="form-group text-right">
           <%= form.submit class: 'btn btn-primary d-block btn-block' %>
           <%= link_to 'Cancel', board_path(@board), class: 'btn btn-secondary d-block btn-block' %>

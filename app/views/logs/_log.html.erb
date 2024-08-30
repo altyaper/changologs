@@ -1,5 +1,5 @@
 <div class='col-md-4 mb-4 log'>
-  <div class='card shadow-sm'>
+  <div class='card shadow-sm' style="background-color: <%= log.color %>">
     <div class="card-body position-relative">
       <div class="position-absolute p-2 text-right log-actions">
         <%= link_to board_log_path(log.board, log), class: "mr-1 badge badge-success" do %>
