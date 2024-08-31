@@ -2,11 +2,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   include RackSessionsFix
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
+  def update
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+
+    redirect_to edit_registration_path(resource_name) and return if should_disable_otp? && !disable_otp!
+
+    process_standard_update
+  end
+
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:first_name, :last_name, :email, :password)}
-    devise_parameter_sanitizer.permit(:account_update, keys: [:email, :first_name, :last_name, :profile_picture, :otp_attempt])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :profile_picture, :otp_attempt])
   end
 
   def respond_with(current_user, _opts = {})
@@ -29,14 +38,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
         super
       }
     end
-  end
-
-  def update
-    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-
-    redirect_to edit_registration_path(resource_name) and return if should_disable_otp? && !disable_otp!
-
-    process_standard_update
   end
 
   protected

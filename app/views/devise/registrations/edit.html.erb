@@ -17,7 +17,7 @@
 
         <div class="form-group">
           <%= f.label :email %>
-          <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: 'email', disabled: true, class: 'form-control' %>
         </div>
 
         <div class="form-group">
@@ -50,12 +50,12 @@
         </div>
 
         <% if resource.otp_required_for_login %>
-          <div class="field">
+          <div class="field mb-3">
             <i>Enter OTP to disable 2FA</i>
             <%= f.text_field :otp_attempt %>
           </div>
         <% else %>
-          <div class="field">
+          <div class="form mb-3">
             <i>Enable 2FA?</i>            
             <%= link_to "Enable 2FA", enable_otp_show_qr_path %>
           </div>
@@ -63,12 +63,11 @@
 
         <div class="form-group">
           <%= f.submit t('.update'), class: 'btn btn-primary' %>
+          <%= link_to t('.back'), profile_path %>
         </div>
       <% end %>
 
-      <p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %>.</p>
-
-      <%= link_to t('.back'), :back %>
+      
     </div>
   </div>
 </div>
