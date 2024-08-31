@@ -89,3 +89,7 @@ gem "pundit"
 gem 'friendly_id', '~> 5.1.0'
 
 gem 'active_model_serializers'
+
+gem "devise-two-factor", "~> 5.1"
+
+gem "rqrcode"

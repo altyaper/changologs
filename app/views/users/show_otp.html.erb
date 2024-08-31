@@ -1,0 +1,10 @@
+<p>Enter OTP</p>
+<%= form_tag verify_user_otp_path, method: :post do %>
+  <div class="field">
+    <%= label_tag :otp_attempt, "OTP Code" %><br />
+    <%= text_field_tag :otp_attempt %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Verify" %>
+  </div>
+<% end %>

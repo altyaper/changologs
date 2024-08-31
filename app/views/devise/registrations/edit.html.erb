@@ -49,6 +49,18 @@
           <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
         </div>
 
+        <% if resource.otp_required_for_login %>
+          <div class="field">
+            <i>Enter OTP to disable 2FA</i>
+            <%= f.text_field :otp_attempt %>
+          </div>
+        <% else %>
+          <div class="field">
+            <i>Enable 2FA?</i>            
+            <%= link_to "Enable 2FA", enable_otp_show_qr_path %>
+          </div>
+        <% end %>
+
         <div class="form-group">
           <%= f.submit t('.update'), class: 'btn btn-primary' %>
         </div>
