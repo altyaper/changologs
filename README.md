@@ -1,24 +1,29 @@
-# README
+# Changologs
+An application for saving simple but useful notes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Featrues
+* Authentication
+* Add boards
+* Add logs within boards
+* Profile
+* Send emails when adding or removing logs
+* Share boards with other people
+* 2FA
 
-Things you may want to cover:
+## How to run it
+* `bundle install`: Install dependencies
+* `rails db:create`: Create database
+* `rails db:migrate`: Run migrations
+* `rails server`: Run the application
 
-* Ruby version
 
-* System dependencies
+## Screenshots
+![alt text](images/boards.png)
 
-* Configuration
+![alt text](images/logs.png)
 
-* Database creation
 
-* Database initialization
+## Demo app
+[changologs.com](changologs.com)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Created with love by Jorge Chávez
