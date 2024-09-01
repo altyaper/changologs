@@ -1,7 +1,7 @@
 # Changologs
 An application for saving simple but useful notes
 
-## Featrues
+## Features
 * Authentication
 * Add boards
 * Add logs within boards
