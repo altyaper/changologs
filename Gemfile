@@ -93,3 +93,7 @@ gem 'active_model_serializers'
 gem "devise-two-factor", "~> 5.1"
 
 gem "rqrcode"
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2';
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
