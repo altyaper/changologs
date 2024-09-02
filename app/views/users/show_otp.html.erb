@@ -5,7 +5,7 @@
       <%= form_tag verify_user_otp_path, method: :post do %>
         <div class="form-group">
           <%= label_tag :otp_attempt, "OTP Code" %><br />
-          <%= text_field_tag :otp_attempt, "", class: 'form-control' %>
+          <%= text_field_tag :otp_attempt, "", class: 'form-control', html: { autocomplete: "off" } %>
         </div>
         <div class="actions">
           <%= submit_tag "Verify", class: 'btn btn-primary mt-2' %>
