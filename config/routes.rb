@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resources :friend_requests
   end
   
+  resources :api_clients, only: [:index, :create, :destroy]
   resources :friends
   resources :user_board
   resources :boards do
