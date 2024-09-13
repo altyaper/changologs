@@ -1,13 +1,13 @@
 class BoardsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_client_or_user!
   before_action :set_board, only: [:edit, :update, :destroy, :show]
   skip_before_action :verify_authenticity_token, only: [:share]
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
-    boards = Board.all.where(user_id: current_user.id).order(created_at: :desc)
-    sharedBoards = User.find(current_user.id).user_boards.map do |user_board| user_board.board end
+    boards = Board.all.where(user_id: @user.id).order(created_at: :desc)
+    sharedBoards = User.find(@user.id).user_boards.map do |user_board| user_board.board end
     respond_to do |format|
       format.json {
         render json: {
@@ -43,7 +43,7 @@ class BoardsController < ApplicationController
 
   def create
     @board = Board.create(board_params)
-    @board.user_id = current_user.id
+    @board.user_id = @user.id
     saved = @board.save!
     respond_to do |format|
       format.json {
@@ -67,7 +67,7 @@ class BoardsController < ApplicationController
   def update
     respond_to do |format|
       format.json {
-        if @board.user_id === current_user.id
+        if @board.user_id === @user.id
           updated = @board.update(board_params)
           render json: {
             board: updated
