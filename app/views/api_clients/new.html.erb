@@ -1,13 +1,22 @@
-<div class="text-right">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    + Create new Client API
-  </button>
+<% if @api_clients.size == 0 %>
+  <div class="text-right">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      + Create new Client API
+    </button>
+  </div>
+<% end %>
+
+<div class="form-group">
+  <% @api_clients.each do |api_client| %>
+    <div><%= api_client.name %></div>
+    <input class="form-control" value="<%= api_client.client_id %>" />
+  <% end %>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <%= form_with model: @api_client, local: true do |form| %>
+    <%= form_with model: @api_client, url: api_clients_path, local: true do |form| %>
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Add New API Client</h5>

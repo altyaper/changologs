@@ -10,6 +10,7 @@ class User < ApplicationRecord
          :jwt_authenticatable, jwt_revocation_strategy: self
 
   has_many :logs
+  has_many :api_clients
   has_many :user_boards  
   has_one_attached :profile_picture
 

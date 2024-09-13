@@ -27,6 +27,4 @@ class FriendshipController < ApplicationController
       end
     end
   end
-
-
 end
