@@ -48,7 +48,7 @@ class LogsController < ApplicationController
     respond_to do |format|
       format.json {
         if @log.save!
-          LogMailer.new_log(@log).deliver_now unless @log.user_id != @user.id
+          # LogMailer.new_log(@log).deliver_now unless @log.user_id != @user.id
           render json: {
             log: @log
           }, status: :ok
@@ -100,7 +100,7 @@ class LogsController < ApplicationController
   def destroy
     @log = Log.find_by(hash_id: params[:id])
     @log.destroy
-    LogMailer.deleted_log(@log).deliver_now
+    # LogMailer.deleted_log(@log).deliver_now
     respond_to do |format|
       format.json {
         render json: {
