@@ -24,6 +24,6 @@ An application for saving simple but useful notes
 
 
 ## Demo app
-[changologs.com](changologs.com)
+[changologs.com](https://changologs.com)
 
 Created with love by Jorge Chávez
