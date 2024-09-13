@@ -1,5 +1,5 @@
 class LogsController < ApplicationController
-  before_action :authenticate_user!, only: [:update, :create, :index, :edit, :new, :destroy]
+  before_action :authenticate_client_or_user!, only: [:update, :create, :index, :edit, :new, :destroy]
   before_action :authenticate!, only: [:show]
   before_action :set_board, only: [:update, :create, :index, :show, :edit, :new, :destroy]
 
@@ -13,7 +13,7 @@ class LogsController < ApplicationController
   end
 
   def index
-    @logs = Log.all.where(user_id: current_user.id).order(created_at: :desc)
+    @logs = Log.all.where(user_id: @user.id).order(created_at: :desc)
     respond_to do |format|
       format.json {
         render json: {
@@ -44,11 +44,11 @@ class LogsController < ApplicationController
   def create
     @log = Log.create(log_params)
     @log.board = @board;
-    @log.user_id = current_user.id
+    @log.user_id = @user.id
     respond_to do |format|
       format.json {
         if @log.save!
-          LogMailer.new_log(@log).deliver_now unless @log.user_id != current_user.id
+          LogMailer.new_log(@log).deliver_now unless @log.user_id != @user.id
           render json: {
             log: @log
           }, status: :ok
@@ -60,7 +60,7 @@ class LogsController < ApplicationController
       }
       format.html {
         if @log.save!
-          LogMailer.new_log(@log).deliver_now unless @log.user_id != current_user.id
+          LogMailer.new_log(@log).deliver_now unless @log.user_id != @user.id
           redirect_to board_log_path(@board, @log)
         else
           render 'new'
