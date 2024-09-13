@@ -19,6 +19,20 @@ class ApiClientsController < ApplicationController
     end
   end
 
+  def regenerate
+    @api_client = current_user.api_clients.find(params[:id])
+    @api_client.generate_credentials # Custom method to regenerate the key
+    if @api_client.save
+      redirect_to profile_path, notice: """
+      API key regenerated successfully.
+      New Secret Key: #{@api_client.client_secret}
+      Save it in a secure place
+      """
+    else
+      redirect_to profile_path, alert: 'Failed to regenerate API key.'
+    end
+  end
+
   private
 
   def api_client_params

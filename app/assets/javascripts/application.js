@@ -22,4 +22,5 @@
 //= require summernote-init
 //= require friends
 //= require boards
+//= require api_client
 //= require_tree .

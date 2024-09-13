@@ -1,25 +1,67 @@
 <% if @api_clients.size == 0 %>
   <div class="text-right">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newClientApiModal">
       + Create new Client API
     </button>
   </div>
 <% end %>
 
-<div class="form-group">
-  <% @api_clients.each do |api_client| %>
-    <div><%= api_client.name %></div>
-    <input class="form-control" value="<%= api_client.client_id %>" />
-  <% end %>
-</div>
+<% @api_clients.each do |api_client| %>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="form-group">
+        <input disabled id="api-key-input" type="password" class="form-control" value="<%= api_client.client_id %>" />
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="text-right">
+        <button role="button" id="reveal-button" class="btn btn-outline-primary">Reveal</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+    <% if @api_clients.size == 1 %>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#regenerateClientApiModal">
+          Regenerate API Key...
+        </button>
+    <% end %>
+    </div>
+  </div>
+  <!-- Regenerate Modal -->
+  <div class="modal fade" id="regenerateClientApiModal" tabindex="-1" role="dialog" aria-labelledby="regenerateClientApiModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="regenerateClientApiModalLabel">Regenerate API Key</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <strong>Regenerating your API key will cause any clients using this token to lose access.</strong>
+            <p>Are you sure you want to regenerate your API key?</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= form_with url: "/api_clients/#{api_client.id}/regenerate", method: :put, local: true, id: 'regenerateForm' do %>
+            <%= submit_tag 'Regenerate', class: "btn btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- New Modal -->
+<div class="modal fade" id="newClientApiModal" tabindex="-1" role="dialog" aria-labelledby="newClientApiModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <%= form_with model: @api_client, url: api_clients_path, local: true do |form| %>
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add New API Client</h5>
+          <h5 class="modal-title" id="newClientApiModalLabel">Add New API Client</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

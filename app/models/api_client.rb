@@ -4,8 +4,6 @@ class ApiClient < ApplicationRecord
 
   validates :name, presence: true
 
-  private
-
   def generate_credentials
     self.client_id = SecureRandom.hex(16)
     self.client_secret = SecureRandom.hex(32)
