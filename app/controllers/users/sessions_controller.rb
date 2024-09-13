@@ -1,6 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
 
-
   # POST /resource/sign_in
   def create
     # Authenticate user with just email and password.
@@ -33,7 +32,7 @@ class Users::SessionsController < Devise::SessionsController
     redirect_to new_user_session_path
   end
 
-  private
+    private
   def respond_with(current_user, _opts = {})
     @token = request.env['warden-jwt_auth.token']
     respond_to do |format|

@@ -7,7 +7,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :registerable,
          :recoverable, :rememberable, :validatable,
-         :jwt_authenticatable, jwt_revocation_strategy: self
+         :jwt_authenticatable, jwt_revocation_strategy: self,
+         :omniauthable, :omniauth_providers: [:google_oauth2]
 
   has_many :logs
   has_many :api_clients
