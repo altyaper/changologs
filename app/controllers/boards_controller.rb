@@ -23,9 +23,13 @@ class BoardsController < ApplicationController
   end
   
   def show
+    @logs = @board.logs
+    if params[:title].present?
+      @logs = @logs.where('title ILIKE ?', "%#{params[:title]}%")
+    end
     respond_to do |format|
       format.json {
-        logs = @board.logs.map{ |log| LogSerializer.new(log).serializable_hash[:data][:attributes] }
+        logs = logs.map{ |log| LogSerializer.new(log).serializable_hash[:data][:attributes] }
         render json: {
           board: @board,
           logs: logs
