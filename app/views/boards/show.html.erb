@@ -24,7 +24,7 @@
 </div>
 <%= render 'partials/header' %>
 <div class='container border p-4'>
-  <div id="board-id" data-board-id="<%= @board.id %>" class="row border-bottom mb-4">
+  <div id="board-id" data-board-id="<%= @board.id %>" class="row border-bottom mb-2">
     <div class="col-md-6">
       <h1><%= @board.name %></h1>
     </div>
@@ -50,11 +50,15 @@
       </div>
     </div>
   </div>
-
-  <% if @board.logs.any? %>
-    <div class='row'>
-      <%= render @board.logs.order(created_at: :desc) %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'filter' %>  
     </div>
+  </div>
+  <% if @logs.any? %>
+  <div class='row'>
+    <%= render @logs.order(created_at: :desc) %>
+  </div>
   <% else %>
     <div class="jumbotron jumbotron-fluid border rounded">
       <div class="container">
