@@ -28,12 +28,22 @@ class BoardsController < ApplicationController
       search = params[:title]
       @logs = @logs.where('lower(title) LIKE ? OR lower(text) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%")
     end
+
+    if params[:date].present?
+      begin
+        selected_date = Date.strptime(params[:date], '%m/%d/%Y')
+        @logs = @logs.where(created_at: selected_date.beginning_of_day..selected_date.end_of_day)
+      rescue ArgumentError
+        # Handle invalid date format gracefully
+        flash[:error] = "Invalid date format"
+      end
+    end
     respond_to do |format|
       format.json {
-        logs = logs.map{ |log| LogSerializer.new(log).serializable_hash[:data][:attributes] }
+        @logs = @logs.map{ |log| LogSerializer.new(log).serializable_hash[:data][:attributes] }
         render json: {
           board: @board,
-          logs: logs
+          logs: @logs
         }, status: :ok
       }
       format.html {

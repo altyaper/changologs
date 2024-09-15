@@ -2,6 +2,12 @@
 // All this logic will automatically be available in application.js.
 $( document ).on('turbolinks:load', function() {
 
+  $('#datepicker').datepicker({
+    format: 'mm/dd/yyyy',
+    autoclose: true,
+    todayHighlight: true,
+  });
+
   $("#shareModal").on('hidden.bs.modal', function() {
     $('#shareModal #list-friends').html('');
   });

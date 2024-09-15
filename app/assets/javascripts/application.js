@@ -17,6 +17,7 @@
 //= require popper
 //= require bootstrap-tagsinput
 //= require bootstrap
+//= require bootstrap-datepicker
 //= require clipboard
 //= require summernote/summernote-bs4.min
 //= require summernote-init

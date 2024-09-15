@@ -8,10 +8,19 @@
       </div>
       <%= f.text_field :title, value: params[:title], class: "form-control", placeholder: "Filter by title" %>
     </div>
-    <% if (params[:title] != "") %>
+    <div class="form-group ml-2">
+      <div class="input-group date" id="datepicker">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-calendar"></i>
+          </span>
+        </div>
+         <%= f.text_field :date, class: "form-control", id: "date-input", placeholder: "Select date", value: params[:date] %>
+      </div>
+    </div>
+    <%= f.submit "Filter", class: "btn btn-primary ml-2" %>
+    <% if (params[:title].present? || params[:date].present?) %>
       <%= link_to "Clear Filters", board_path(@board), class: "btn btn-outline-primary ml-2" %>
-    <% else %>
-      <%= f.submit "Filter", class: "btn btn-primary ml-2" %>
     <% end %>
   <% end %>
 </div>
