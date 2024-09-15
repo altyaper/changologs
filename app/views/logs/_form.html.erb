@@ -15,6 +15,7 @@
     </div>
     <div class="col-md-4">
 
+<<<<<<< HEAD
       <%= hidden_field(:board_id, @log.board_id) %>
 
        <div class="form-group">
@@ -41,6 +42,37 @@
           <%= form.submit class: 'btn btn-primary d-block btn-block' %>
           <%= link_to 'Cancel', board_path(@board), class: 'btn btn-secondary d-block btn-block' %>
         </div>
+=======
+      <div class="form-group">
+        <%= form.label :board_id, "Board" %>
+        <%= form.select :board_id, options_for_select(@boards_options, @log.board_id), {}, { class: "form-control" } %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :tag_list %><br>
+        <%= form.text_field :tag_list, 'data-role'=>'tagsinput', class: 'form-control' %>
+      </div>
+
+      <div class="flex-column form-check form-check-inline">
+        <%= form.check_box :is_private, { checked: @log.is_private } %>
+        <%= form.label :is_private, 'Private', class: 'ml-2' %><br>
+      </div>
+
+      <div class="flex-column form-check form-check-inline">
+        <%= form.check_box :bluried, class: 'mr-2' %>
+        <%= form.label :bluried %><br>
+      </div>
+
+      <div class="flex-column form-check form-check-inline">
+        <%= form.color_field :color, value: @log.color || "#f9f9f9", class: 'mr-2' %>
+        <%= form.label :color %><br>
+      </div>
+
+      <div class="form-group text-right">
+        <%= form.submit class: 'btn btn-primary d-block btn-block' %>
+        <%= link_to 'Cancel', board_path(@board), class: 'btn btn-secondary d-block btn-block' %>
+      </div>
+>>>>>>> 98304cf... add selected board id
 
     </div>
   </div>
