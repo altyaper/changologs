@@ -25,7 +25,8 @@ class BoardsController < ApplicationController
   def show
     @logs = @board.logs
     if params[:title].present?
-      @logs = @logs.where('title ILIKE ?', "%#{params[:title]}%")
+      search = params[:title]
+      @logs = @logs.where('lower(title) LIKE ? OR lower(text) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%")
     end
     respond_to do |format|
       format.json {
