@@ -69,6 +69,7 @@ gem 'byebug'
 
 gem "wysiwyg-rails"
 gem "font-awesome-rails"
+gem "bootstrap-datepicker-rails"
 
 gem 'devise'
 gem 'devise-jwt'

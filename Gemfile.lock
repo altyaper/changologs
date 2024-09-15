@@ -108,6 +108,8 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
+    bootstrap-datepicker-rails (1.10.0.1)
+      railties (>= 3.0)
     bootstrap-tagsinput-rails (0.4.2.1)
       railties (>= 3.1)
     builder (3.3.0)
@@ -350,6 +352,7 @@ DEPENDENCIES
   aws-sdk-s3
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.0.0)
+  bootstrap-datepicker-rails
   bootstrap-tagsinput-rails
   byebug
   clipboard-rails
