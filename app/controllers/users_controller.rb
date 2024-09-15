@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: %i[show_otp verify_otp]
+  before_action :authenticate_client_or_user!, except: %i[show_otp verify_otp]
 
   def disable_otp
     # current_user.otp_required_for_login = false
@@ -88,4 +88,9 @@ class UsersController < ApplicationController
     render json: users
   end
 
+  def show
+    @user = current_user
+    @api_client = ApiClient.new
+    @api_clients = @user.api_clients
+  end
 end

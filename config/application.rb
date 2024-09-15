@@ -18,5 +18,7 @@ module Changologs
     # config.assets.initialize_on_precompile = false
     # config.eager_load = true
     # config.eager_load_paths += %W(#{config.root}/app/lib)
+    config.time_zone = 'Pacific Time (US & Canada)'
+    config.active_record.default_timezone = :utc
   end
 end
