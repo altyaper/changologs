@@ -71,6 +71,7 @@ class LogsController < ApplicationController
 
   def edit
     @log = Log.find_by(hash_id: params[:id])
+    @boards_options = Board.where(user_id: current_user.id).map { |board| [board.name, board.id] }
   end
 
   def update
