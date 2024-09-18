@@ -39,6 +39,7 @@ class LogsController < ApplicationController
   def new
     @log = Log.new
     @log.board_id = params[:board_id]
+    @boards_options = Board.where(user_id: current_user.id).map { |board| [board.name, board.id] }
   end
 
   def create
