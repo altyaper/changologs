@@ -42,7 +42,7 @@ Rails.application.configure do
     api_key: ENV['CHANGOLOGS_MAILGUN_API_KEY'],
     domain: ENV['CHANGOLOGS_MAILGUN_DOMAIN']
   }
-  
+
   # Devise
   config.action_mailer.default_url_options = { host: 'localhost:3000', port: 3000 }
 

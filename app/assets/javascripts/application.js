@@ -25,3 +25,9 @@
 //= require boards
 //= require api_client
 //= require_tree .
+
+$( document ).on('turbolinks:load', () => {
+  $("#hide-sidebar-button").on('click', () => {
+    $('.changologs-sidebar').toggleClass('sidebar-closed');
+  });
+})
