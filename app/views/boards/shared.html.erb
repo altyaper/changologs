@@ -1,0 +1,17 @@
+<%= render 'partials/header' %>
+<div class="changologs-app-container">
+  <%= render 'partials/sidebar' %>
+  <div class="app-content">
+     <div class='container'>
+        <h6 class="label-icon"><%= fa_icon "share" %>Shared with you</h6>
+        <% if @sharedBoards.empty? %>
+          <%= render partial: 'partials/empty', locals: { message: "You don't have any logs shared with you yet" } %>
+        <% else %>
+          <div class='row'>
+            <%= render @sharedBoards %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

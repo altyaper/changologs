@@ -1,22 +1,27 @@
 <%= render 'partials/header' %>
-<div class='container mb-5 pb-5'>
-  <div class="border p-3">
-    <h3>My boards</h3>
-    <% if @boards.empty? %>
-      <%= render partial: 'partials/empty', locals: { message: "You don't have any logs yet" } %>
-    <% else %>
-      <div class='row'>
-        <%= render @boards %>
+<div class="changologs-app-container">
+  <%= render 'partials/sidebar' %>
+  <div class="app-content">
+    <div class='container'>
+      <div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="flex align-center w-100">
+              <h6 class="label-icon mr-auto"><%= fa_icon "folder" %>My boards</h6>
+              <%= link_to new_board_path, class: 'btn btn-secondary' do %>
+                New log
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% if @boards.empty? %>
+          <%= render partial: 'partials/empty', locals: { message: "You don't have any logs yet" } %>
+        <% else %>
+          <div class='row'>
+            <%= render @boards %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    <div class="my-3 border-bottom"></div>
-    <h3>Shared with you</h3>
-    <% if @sharedBoards.empty? %>
-      <%= render partial: 'partials/empty', locals: { message: "You don't have any logs yet" } %>
-    <% else %>
-      <div class='row'>
-        <%= render @sharedBoards %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>

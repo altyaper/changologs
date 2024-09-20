@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.label-icon {
+  color: $light-grey;
+  .fa {
+    margin-right: 5px;
+  }
+}
 .board-wrapper {
   .board-wrapper__board-item {
     min-height: 150px;

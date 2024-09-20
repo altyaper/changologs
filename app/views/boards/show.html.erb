@@ -1,109 +1,91 @@
-<!-- Modal -->
-<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="shareModalLabel">Share board</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="selected-friends d-flex mb-3">
-        </div>
-        <ul id="list-friends" class="list-group">
-          <div class='card p-3'>No friends added to yet</div>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="share-board-button" data-board-id="<%= @board.id %>">Share</button>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'partials/shareBoardModal' %>
 <%= render 'partials/header' %>
-<div class='container border p-4'>
-  <div id="board-id" data-board-id="<%= @board.id %>" class="row border-bottom mb-2">
-    <div class="col-md-6">
-      <h1><%= @board.name %></h1>
-    </div>
-    <div class="col-md-6 text-right">
-      <div class="items-actions">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Menu
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <%= link_to 'New log', new_board_log_path(@board), class: 'dropdown-item' %>
-            <% if @board.owner?(current_user) %>
-              <%= link_to 'Edit board', edit_board_path(@board), class: 'dropdown-item' %>
-              <%= link_to 'Delete board', board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
-              <button class='dropdown-item' data-toggle="modal" data-target="#shareModal" id="share-board-button">Share</button>
-            <% end %>
-            <li><hr class="dropdown-divider"></li>
-            <% if !@board.owner?(current_user) %>
-              <%= link_to 'Leave board', user_board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
-            <% end%>
+<div class="changologs-app-container">
+  <%= render 'partials/sidebar' %>
+  <div class="app-content">
+    <div class='container'>
+      <div id="board-id" data-board-id="<%= @board.id %>" class="row border-bottom mb-2">
+        <div class="col-md-6">
+          <h1><%= @board.name %></h1>
+        </div>
+        <div class="col-md-6 text-right">
+          <div class="items-actions">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to 'New log', new_board_log_path(@board), class: 'dropdown-item' %>
+                <% if @board.owner?(current_user) %>
+                  <%= link_to 'Edit board', edit_board_path(@board), class: 'dropdown-item' %>
+                  <%= link_to 'Delete board', board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
+                  <button class='dropdown-item' data-toggle="modal" data-target="#shareModal" id="share-board-button">Share</button>
+                <% end %>
+                <li><hr class="dropdown-divider"></li>
+                <% if !@board.owner?(current_user) %>
+                  <%= link_to 'Leave board', user_board_path(@board), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
+                <% end%>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <%= render 'filter' %>  
-    </div>
-  </div>
-  <% if @logs.any? %>
-  <div class='row'>
-    <%= render @logs.order(created_at: :desc) %>
-  </div>
-  <% else %>
-    <div class="jumbotron jumbotron-fluid border rounded">
-      <div class="container">
-        <h4 class="text-center">You don't have any logs yet</h4>
+      <div class="row">
+        <div class="col-md-12">
+          <%= render 'filter' %>  
+        </div>
       </div>
-    </div>
-  <% end %>
-  <div class="accordion" id="accordionExample">
-    <div class="card">
-      <div class="card-header" id="headingOne">
-        <h2 class="mb-0">
-          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Board information
-          </button>
-        </h2>
+      <% if @logs.any? %>
+      <div class='row'>
+        <%= render @logs.order(created_at: :desc) %>
       </div>
+      <% else %>
+        <div class="jumbotron jumbotron-fluid border rounded">
+          <div class="container">
+            <h4 class="text-center">You don't have any logs yet</h4>
+          </div>
+        </div>
+      <% end %>
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Board information
+              </button>
+            </h2>
+          </div>
 
-      <div id="collapseOne" class="collapse hidden" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-12">
-              <span><strong>Created by:</strong>
-              <% if @board.user.profile_picture.attached? %>
-                <%= image_tag rails_blob_url(@board.user.profile_picture), class: "profile-picture" %>
-              <% else %>
-                <i class="fa fa-user mr-2"></i>
-              <% end %>
-              <span><%= @board.user.full_name %></span>
-              <% if @board.user_boards.present? %>
-                <div><span><strong>Shared with:</span></div>
-                <ul>
-                  <% @board.user_boards.each do |user_board|%>
-                    <li>
-                    <% if user_board.user.profile_picture.attached? %>
-                      <%= image_tag rails_blob_url(user_board.user.profile_picture), class: "profile-picture" %>
-                    <% else %>
-                      <i class="fa fa-user mr-2"></i>
-                    <% end %>
-                    <%= user_board.user.full_name %> 
-                    <% if @board.owner?(current_user) %>
-                      <div class='btn text-secondary d-inline'><i class="fa fa-close"></i></div></li>
-                    <% end %>
+          <div id="collapseOne" class="collapse hidden" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <span><strong>Created by:</strong>
+                  <% if @board.user.profile_picture.attached? %>
+                    <%= image_tag rails_blob_url(@board.user.profile_picture), class: "profile-picture" %>
+                  <% else %>
+                    <i class="fa fa-user mr-2"></i>
                   <% end %>
-                </ul>
-              <% end %>
+                  <span><%= @board.user.full_name %></span>
+                  <% if @board.user_boards.present? %>
+                    <div><span><strong>Shared with:</span></div>
+                    <ul>
+                      <% @board.user_boards.each do |user_board|%>
+                        <li>
+                        <% if user_board.user.profile_picture.attached? %>
+                          <%= image_tag rails_blob_url(user_board.user.profile_picture), class: "profile-picture" %>
+                        <% else %>
+                          <i class="fa fa-user mr-2"></i>
+                        <% end %>
+                        <%= user_board.user.full_name %> 
+                        <% if @board.owner?(current_user) %>
+                          <div class='btn text-secondary d-inline'><i class="fa fa-close"></i></div></li>
+                        <% end %>
+                      <% end %>
+                    </ul>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
         </div>

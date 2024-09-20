@@ -24,6 +24,111 @@
 @import "summernote-bs4";
 @import "font-awesome";
 
+.w-100 {
+  width: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+.changologs-main-app-wrapper {
+  height: 100vw;
+  overflow: hidden;
+}
+
+.changologs-app-container {
+  width: 100vw;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex: 1 1 0%;
+  background: white;
+  cursor: text;
+
+  .app-content {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .changologs-sidebar {
+    width: 389px;
+    background-color: rgb(247, 247, 245);
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.024) -1px 0px 0px 0px inset;
+
+    .fa-angle-double-left {
+      transition: all 0.3s ease-in-out;
+    }
+
+    .fa {
+      color: rgba(55, 53, 47, 0.45);
+    }
+
+    &.sidebar-closed {
+      width: 80px;
+
+      .fa-angle-double-left {
+        transform: rotate(180deg);
+      }
+
+      .menu {
+        .menu-button {
+          text-align: center;
+          .fa {
+            font-size: 30px;
+          }
+          a {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .hide-sidebar {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background: none;
+      padding: 0px;
+      border: 0;
+      border-radius: 4px;
+      height: 28px;
+      width: 28px;
+      cursor: pointer;
+      &:hover {
+        background: rgba(0, 0, 0, 0.03);
+      }
+    }
+
+    .menu {
+      padding-top: 40px;
+      padding: 40px 10px 0 10px;
+      .menu-button {
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        border-radius: 4px;
+        a {
+          color: $light-grey;
+          font-size: 14px;
+          font-weight: 500;
+          .fa {
+            font-size: 16px;
+            margin-right: 5px;
+          }
+        }
+        &:hover {
+          background: rgba(0, 0, 0, 0.03);
+        }
+      }
+    }
+  }
+}
+
 a {
   text-decoration: none;
   color: $blue;
@@ -84,4 +189,8 @@ footer {
 
 .flex {
   display: flex;
+}
+
+.align-center {
+  align-items: center;
 }
