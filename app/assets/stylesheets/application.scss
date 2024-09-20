@@ -38,6 +38,11 @@
   background: white;
   cursor: text;
 
+  .app-content {
+    padding: 20px;
+    width: 100%;
+  }
+
   .changologs-sidebar {
     width: 389px;
     background-color: rgb(247, 247, 245);
@@ -47,11 +52,14 @@
 
     .fa-angle-double-left {
       transition: all 0.3s ease-in-out;
+    }
+
+    .fa {
       color: rgba(55, 53, 47, 0.45);
     }
 
     &.sidebar-closed {
-      width: 100px;
+      width: 80px;
 
       .fa-angle-double-left {
         transform: rotate(180deg);
@@ -61,9 +69,9 @@
         .menu-button {
           text-align: center;
           .fa {
-            font-size: 47px;
+            font-size: 30px;
           }
-          span {
+          a {
             display: none;
           }
         }
@@ -96,7 +104,11 @@
         text-align: left;
         cursor: pointer;
         border-radius: 4px;
-        color: rgba(55, 53, 47, 0.65);
+        a {
+          color: rgba(55, 53, 47, 0.65);
+          font-size: 14px;
+          font-weight: 500;
+        }
         &:hover {
           background: rgba(0, 0, 0, 0.03);
         }

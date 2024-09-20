@@ -2,14 +2,13 @@
 <div class="changologs-app-container">
   <%= render 'partials/sidebar' %>
   <div class="app-content">
-    <div class='container'>
-      <div>
-        <h3>My boards</h3>
-        <% if @boards.empty? %>
+     <div class='container'>
+        <h3>Shared with you</h3>
+        <% if @sharedBoards.empty? %>
           <%= render partial: 'partials/empty', locals: { message: "You don't have any logs yet" } %>
         <% else %>
           <div class='row'>
-            <%= render @boards %>
+            <%= render @sharedBoards %>
           </div>
         <% end %>
       </div>

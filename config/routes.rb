@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/logs/search', to: 'logs#search'
   get '/users/:user_id/friend', to: 'users#friend_request'
   get '/profile', to: 'users#show'
+  get '/shared', to: 'boards#shared'
   
   scope 'api' do
     get '/users/search_friends', to: 'users#search_friends'
