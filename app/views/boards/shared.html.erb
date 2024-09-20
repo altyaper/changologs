@@ -3,9 +3,9 @@
   <%= render 'partials/sidebar' %>
   <div class="app-content">
      <div class='container'>
-        <h3>Shared with you</h3>
+        <h6 class="label-icon"><%= fa_icon "share" %>Shared with you</h6>
         <% if @sharedBoards.empty? %>
-          <%= render partial: 'partials/empty', locals: { message: "You don't have any logs yet" } %>
+          <%= render partial: 'partials/empty', locals: { message: "You don't have any logs shared with you yet" } %>
         <% else %>
           <div class='row'>
             <%= render @sharedBoards %>

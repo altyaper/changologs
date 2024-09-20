@@ -24,6 +24,14 @@
 @import "summernote-bs4";
 @import "font-awesome";
 
+.w-100 {
+  width: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
 .changologs-main-app-wrapper {
   height: 100vw;
   overflow: hidden;
@@ -105,9 +113,13 @@
         cursor: pointer;
         border-radius: 4px;
         a {
-          color: rgba(55, 53, 47, 0.65);
+          color: $light-grey;
           font-size: 14px;
           font-weight: 500;
+          .fa {
+            font-size: 16px;
+            margin-right: 5px;
+          }
         }
         &:hover {
           background: rgba(0, 0, 0, 0.03);
@@ -177,4 +189,8 @@ footer {
 
 .flex {
   display: flex;
+}
+
+.align-center {
+  align-items: center;
 }

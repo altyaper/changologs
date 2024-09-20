@@ -4,7 +4,16 @@
   <div class="app-content">
     <div class='container'>
       <div>
-        <h3>My boards</h3>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="flex align-center w-100">
+              <h6 class="label-icon mr-auto"><%= fa_icon "folder" %>My boards</h6>
+              <%= link_to new_board_path, class: 'btn btn-secondary' do %>
+                New log
+              <% end %>
+            </div>
+          </div>
+        </div>
         <% if @boards.empty? %>
           <%= render partial: 'partials/empty', locals: { message: "You don't have any logs yet" } %>
         <% else %>
