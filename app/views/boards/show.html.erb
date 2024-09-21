@@ -2,13 +2,13 @@
 <%= render 'partials/header' %>
 <div class="changologs-app-container">
   <%= render 'partials/sidebar' %>
-  <div class="app-content">
+  <div class="app-content board-index">
     <div class='container'>
-      <div id="board-id" data-board-id="<%= @board.id %>" class="row border-bottom mb-2">
-        <div class="col-md-6">
+      <div id="board-id" data-board-id="<%= @board.id %>" class="row border-bottom mb-2 pb-2">
+        <div class="col-6 col-sm-6 col-md-8">
           <h1><%= @board.name %></h1>
         </div>
-        <div class="col-md-6 text-right">
+        <div class="col-6 col-sm-6 col-md-4 text-right">
           <div class="items-actions">
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 .label-icon {
   color: $light-grey;
   .fa {
@@ -42,6 +41,22 @@
       .dropdown-menu {
         z-index: 2;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .filter-logs {
+    .form-group {
+      width: 100%;
+    }
+    .ml-2 {
+      margin-left: 0 !important;
+    }
+  }
+  .board-index {
+    h1 {
+      font-size: 20px;
     }
   }
 }

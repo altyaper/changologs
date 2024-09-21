@@ -89,3 +89,8 @@ form {
     }
   }
 }
+@media only screen and (max-width: 600px) {
+  .logs-new {
+    padding: 0 !important;
+  }
+}
