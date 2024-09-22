@@ -8,10 +8,15 @@
     </div>
     <div class="col-md-4">
 
-        <div class="form-group text-right">
-          <%= form.submit class: 'btn btn-primary d-block btn-block' %>
-          <%= link_to 'Cancel', boards_path, class: 'btn btn-secondary d-block btn-block' %>
-        </div>
+      <div class="form-group">
+        <%= form.label :type, "Board type" %>
+        <%= form.select :board_type, options_for_select(Board.board_types.keys.map { |board_type| [board_type.humanize, board_type] }, @board.board_type), {}, { class: "form-control" } %>
+      </div>
+
+      <div class="form-group text-right">
+        <%= form.submit class: 'btn btn-primary d-block btn-block' %>
+        <%= link_to 'Cancel', boards_path, class: 'btn btn-secondary d-block btn-block' %>
+      </div>
 
     </div>
   </div>

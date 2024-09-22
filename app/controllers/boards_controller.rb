@@ -157,6 +157,6 @@ class BoardsController < ApplicationController
 
   private
     def board_params
-      params.require(:board).permit(:name, :is_private, :id)
+      params.require(:board).permit(:name, :is_private, :id, :board_type)
     end
 end

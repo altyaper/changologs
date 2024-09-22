@@ -35,6 +35,19 @@
 }
 
 .log {
+  &.log-daily_log {
+    .card-body {
+      padding: 0.7em 1em;
+
+      .prev-log-content {
+        display: flex;
+        font-size: 14px;
+        .created_date {
+          font-size: 14px;
+        }
+      }
+    }
+  }
   &:hover {
     & .hide-true {
       filter: blur(0px);

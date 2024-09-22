@@ -37,7 +37,9 @@
       </div>
       <% if @logs.any? %>
       <div class='row'>
-        <%= render @logs.order(created_at: :desc) %>
+        <% @logs.order(created_at: :desc).each do |log| %>
+          <%= render partial: "logs/log_templates/#{log.board.board_type}", locals: { log: log } %>
+        <% end %>
       </div>
       <% else %>
         <div class="jumbotron jumbotron-fluid border rounded">
@@ -46,7 +48,7 @@
           </div>
         </div>
       <% end %>
-      <div class="accordion" id="accordionExample">
+      <div class="accordion mt-4" id="accordionExample">
         <div class="card">
           <div class="card-header" id="headingOne">
             <h2 class="mb-0">
