@@ -13,8 +13,10 @@
         <% end %>
       </div>
       <div class="prev-log-content">
-        <span class='created_date mr-3'><%= log.created_at.to_datetime.strftime("%B %d, %Y %l:%M %p") %></span>
-        <span><%= sanitize(log.text, tags: [], attributes: []) %></span>
+        <div class="flex">
+          <span class='created_date mr-3'><%= log.created_at.to_datetime.strftime("%l:%M %p") %></span>
+          <span><%= sanitize(log.text, tags: [], attributes: []) %></span>
+        </div>
       </div>
     </div>
   </div>
