@@ -15,34 +15,14 @@
  */
 
 @import "bootstrap";
+@import "common";
 @import "variables";
-@import "welcome";
 @import "boards";
 @import "logs";
 @import "friends";
 
 @import "summernote-bs4";
 @import "font-awesome";
-
-a {
-  text-decoration: none;
-  color: $blue;
-  &:hover {
-    text-decoration: none !important;
-  }
-}
-
-img {
-  max-width: 100%;
-}
-
-.shadow {
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
-}
-
-.shadow-sm {
-  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
-}
 
 .form-group {
   .bootstrap-tagsinput {
@@ -59,17 +39,6 @@ img {
   }
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  padding: 10px 0px;
-  font-size: 14px;
-  color: rgba(0,0,0,.75);
-}
-  
 .profile-picture {
   width: 20px;
   height: 20px;
@@ -80,8 +49,4 @@ footer {
   width: 200px;
   height: 200px;
   border-radius: 20px;
-}
-
-.flex {
-  display: flex;
 }

@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 .board-wrapper {
   .board-wrapper__board-item {
     min-height: 150px;
@@ -25,7 +24,7 @@
           width: 3px;
           height: 3px;
           margin: 3px 0;
-          background-color: #fff;
+          background-color: $white;
           border-radius: 50%;
           display: block;
         }
@@ -36,6 +35,27 @@
       .dropdown-menu {
         z-index: 2;
       }
+    }
+  }
+}
+
+.log {
+  overflow: hidden;
+
+  .log-actions {
+    width: 100%;
+    top: -100px;
+    left: 0;
+    transition: all 0.5s cubic-bezier(0.25, 0.52, 0.03, 1.05);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  &:hover {
+    .log-actions {
+      display: block;
+      transform: translateY(0%);
+      top: 0;
     }
   }
 }
