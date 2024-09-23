@@ -76,16 +76,23 @@ class UsersController < ApplicationController
   end
 
   def search_friends
-    return [] if (query = params[:q]).nil?
+    respond_to do |format|
+      format.json {
+        users = []
+        if !params[:q].nil?
+          query = params[:q]
+          id = current_user.id
+          user_ids = FriendRequest
+                      .where('requestor_id = ? OR receiver_id = ?', id, id)
+                      .pluck(:requestor_id, :receiver_id)
+                      .flatten
+                      .uniq
+          users = User.search(query, id).where.not(id: user_ids)
+        end
+        render json: users
+      }
+    end
 
-    id = current_user.id
-    user_ids = FriendRequest
-                  .where('requestor_id = ? OR receiver_id = ?', id, id)
-                  .pluck(:requestor_id, :receiver_id)
-                  .flatten
-                  .uniq
-    users = User.search(query, id).where.not(id: user_ids)
-    render json: users
   end
 
   def show
