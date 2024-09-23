@@ -137,12 +137,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_22_043048) do
     t.string "otp_secret"
     t.integer "consumed_timestep"
     t.boolean "otp_required_for_login"
-    t.string "uid"
-    t.string "provider"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["jti"], name: "index_users_on_jti"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["uid"], name: "index_users_on_uid"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
