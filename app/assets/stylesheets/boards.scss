@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.label-icon {
+  color: $light-grey;
+  .fa {
+    margin-right: 5px;
+  }
+}
 .board-wrapper {
   .board-wrapper__board-item {
     min-height: 150px;
@@ -39,23 +45,18 @@
   }
 }
 
-.log {
-  overflow: hidden;
-
-  .log-actions {
-    width: 100%;
-    top: -100px;
-    left: 0;
-    transition: all 0.5s cubic-bezier(0.25, 0.52, 0.03, 1.05);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+@media only screen and (max-width: 600px) {
+  .filter-logs {
+    .form-group {
+      width: 100%;
+    }
+    .ml-2 {
+      margin-left: 0 !important;
+    }
   }
-  &:hover {
-    .log-actions {
-      display: block;
-      transform: translateY(0%);
-      top: 0;
+  .board-index {
+    h1 {
+      font-size: 20px;
     }
   }
 }

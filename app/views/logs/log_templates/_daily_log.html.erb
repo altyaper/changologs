@@ -1,0 +1,23 @@
+<div class="col-md-12 mb-2 log log-<%= log.board.board_type %>">
+  <div class='card shadow-sm' style="background-color: <%= log.color %>">
+    <div class="card-body position-relative">
+      <div class="position-absolute p-2 text-right log-actions">
+        <%= link_to board_log_path(log.board, log), class: "mr-1 badge badge-success" do %>
+          <i class="fa fa-eye"></i>
+        <% end %>
+        <%= link_to edit_board_log_path(log.board, log), class: "mr-1 badge badge-primary" do %>
+          <i class="fa fa-edit"></i>
+        <% end %>
+        <%= link_to board_log_path(log.board, log), class: "badge badge-danger", method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-trash"></i>
+        <% end %>
+      </div>
+      <div class="prev-log-content">
+        <div class="flex">
+          <span class='created_date mr-3'><%= log.created_at.to_datetime.strftime("%l:%M %p") %></span>
+          <span><%= sanitize(log.text, tags: [], attributes: []) %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

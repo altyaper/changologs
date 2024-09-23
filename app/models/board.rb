@@ -1,6 +1,8 @@
 class Board < ApplicationRecord
   include Friendlyable
 
+  enum board_type: { general: 0, daily_log: 1 }
+
   belongs_to :user
   has_many :logs, dependent: :delete_all
   has_many :user_boards, dependent: :delete_all

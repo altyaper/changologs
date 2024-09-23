@@ -7,16 +7,27 @@ class BoardsController < ApplicationController
 
   def index
     boards = Board.all.where(user_id: @user.id).order(created_at: :desc)
-    sharedBoards = User.find(@user.id).user_boards.map do |user_board| user_board.board end
     respond_to do |format|
       format.json {
         render json: {
           boards: boards,
-          sharedBoards: sharedBoards
         }
       }
       format.html {
         @boards = boards
+      }
+    end
+  end
+
+  def shared
+    sharedBoards = User.find(@user.id).user_boards.map do |user_board| user_board.board end
+    respond_to do |format|
+      format.json {
+        render json: {
+          sharedBoards: sharedBoards
+        }
+      }
+      format.html {
         @sharedBoards = sharedBoards
       }
     end
@@ -146,6 +157,6 @@ class BoardsController < ApplicationController
 
   private
     def board_params
-      params.require(:board).permit(:name, :is_private, :id)
+      params.require(:board).permit(:name, :is_private, :id, :board_type)
     end
 end

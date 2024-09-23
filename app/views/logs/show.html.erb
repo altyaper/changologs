@@ -1,64 +1,69 @@
 <%= render 'partials/header' %>
-<div class='container border p-4'>
-  <div class='row'>
-    <div class='col-md-12'> 
-      <div class='d-flex align-items-center'>
-        <% if @log.is_private %>
-          <%= image_tag("eye-slash-fill.svg", width: 20, class: 'text-secondary mr-2 eye') %>
-        <% else %>
-          <%= image_tag("eye-fill.svg", width: 20, class: 'text-secondary mr-2 eye') %>
-        <% end %>
-        <span class='date'>Created at: <%= @log.created_at.to_datetime.strftime("%B %d, %Y %l:%M %p") %></span>
-        <% if @log.id && !@log.is_private %>
-          <div class='ml-auto'>
-            <div class="ml-auto input-group input-group-sm">
-              <input type="text" value='<%= board_log_url(@board, @log) %>' class="form-control" id="public-link" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-              <div class="input-group-append">
-                <span class="input-group-text btn copy-button tooltiped tooltipped-s" data-clipboard-target="#public-link" aria-label='copied!'>
-                  <%= image_tag("clippy.svg", width: 15) %>
-                </span>
+<div class="changologs-app-container">
+  <%= render 'partials/sidebar' %>
+  <div class="app-content">
+    <div class='container p-4'>
+      <div class='row'>
+        <div class='col-md-12'> 
+          <div class='d-flex align-items-center'>
+            <% if @log.is_private %>
+              <%= image_tag("eye-slash-fill.svg", width: 20, class: 'text-secondary mr-2 eye') %>
+            <% else %>
+              <%= image_tag("eye-fill.svg", width: 20, class: 'text-secondary mr-2 eye') %>
+            <% end %>
+            <span class='date'>Created at: <%= @log.created_at.to_datetime.strftime("%B %d, %Y %l:%M %p") %></span>
+            <% if @log.id && !@log.is_private %>
+              <div class='ml-auto'>
+                <div class="ml-auto input-group input-group-sm">
+                  <input type="text" value='<%= board_log_url(@board, @log) %>' class="form-control" id="public-link" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                  <div class="input-group-append">
+                    <span class="input-group-text btn copy-button tooltiped tooltipped-s" data-clipboard-target="#public-link" aria-label='copied!'>
+                      <%= image_tag("clippy.svg", width: 15) %>
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
+            <% end%>
           </div>
-        <% end%>
-      </div>
-      <h1><%= @log.title %></h1>
-      <main class='log-content'>
-        <%= sanitize @log.text, attributes: %w(style href) %>
-      </main>
-      <div class="mb-4">
-        <% @log.tags.each do |tag| %>
-          <div class="badge badge-primary"><%= tag.name %></div>
-        <% end %>
-      </div>
-      <% if user_signed_in? %>
-      <%= link_to 'Back to board', board_path(@board), class: 'btn btn-primary' %>
-      <%= link_to 'Edit', edit_board_log_path(@board, @log), class: 'btn btn-primary' %>
-      <% end %>
-    </div>
-
-    <div class='col-md-12'>
-      <div class="accordion mt-3" id="accordionExample">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Log information
-              </button>
-            </h2>
+          <h1><%= @log.title %></h1>
+          <main class='log-content'>
+            <%= sanitize @log.text, attributes: %w(style href) %>
+          </main>
+          <div class="mb-4">
+            <% @log.tags.each do |tag| %>
+              <div class="badge badge-primary"><%= tag.name %></div>
+            <% end %>
           </div>
+          <% if user_signed_in? %>
+          <%= link_to 'Back to board', board_path(@board), class: 'btn btn-primary' %>
+          <%= link_to 'Edit', edit_board_log_path(@board, @log), class: 'btn btn-primary' %>
+          <% end %>
+        </div>
 
-          <div id="collapseOne" class="collapse hidden" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <span><strong>Created by:</strong>
-                  <% if @board.user.profile_picture.attached? %>
-                    <%= image_tag rails_blob_url(@board.user.profile_picture), class: "profile-picture" %>
-                  <% else %>
-                    <i class="fa fa-user mr-2"></i>
-                  <% end %>
-                  <%= @board.user.full_name %></span>
+        <div class='col-md-12'>
+          <div class="accordion mt-3" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Log information
+                  </button>
+                </h2>
+              </div>
+
+              <div id="collapseOne" class="collapse hidden" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <span><strong>Created by:</strong>
+                      <% if @board.user.profile_picture.attached? %>
+                        <%= image_tag rails_blob_url(@board.user.profile_picture), class: "profile-picture" %>
+                      <% else %>
+                        <i class="fa fa-user mr-2"></i>
+                      <% end %>
+                      <%= @board.user.full_name %></span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

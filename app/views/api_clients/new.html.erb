@@ -54,29 +54,4 @@
     </div>
   </div>
 <% end %>
-
-<!-- New Modal -->
-<div class="modal fade" id="newClientApiModal" tabindex="-1" role="dialog" aria-labelledby="newClientApiModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <%= form_with model: @api_client, url: api_clients_path, local: true do |form| %>
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="newClientApiModalLabel">Add New API Client</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <%= form.label :name, 'Client Name' %>
-            <%= form.text_field :name, placeholder: 'Enter a name for your API client', class: 'form-control', autocomplete: 'off' %>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <%= form.submit 'Create API Client', class: 'btn btn-primary' %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+<%= render 'partials/newApiClientModal' %>
