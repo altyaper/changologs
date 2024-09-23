@@ -3,6 +3,7 @@ class Log < ApplicationRecord
   
   belongs_to :user
   belongs_to :board
+  has_one :site, dependent: :destroy
 
   has_many :taggings, dependent: :delete_all
   has_many :tags, through: :taggings
@@ -22,4 +23,7 @@ class Log < ApplicationRecord
     search ? where('lower(title) LIKE ? OR lower(text) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%") : all
   end
 
+  def publish!
+    update(published: true)
+  end
 end

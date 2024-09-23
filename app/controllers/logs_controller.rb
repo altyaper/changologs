@@ -100,6 +100,32 @@ class LogsController < ApplicationController
       }
     end
   end
+
+  def publish
+    @board = Board.find_by(hash_id: params[:board_id])
+    @log = @board.logs.find_by(hash_id: params[:id])
+
+    if @log.publish!
+      subdomain = generate_subdomain(@log)
+      protocol = request.protocol # "http://" or "https://"
+      host_with_port = request.host_with_port # "mydomain.com:3000" or "mydomain.com"
+      full_url = "#{protocol}#{subdomain}.#{host_with_port}"
+
+      @site = @log.build_site(
+        name: "Site for #{@log.title}", 
+        subdomain: subdomain,
+        log_id: @log.id
+      )
+      
+      if @site.save
+        redirect_to board_log_path(@board, @log), notice: "Log published and site created successfully. #{full_url}"
+      else
+        redirect_to board_log_path(@board, @log), alert: "Log published but failed to create site."
+      end
+    else
+      redirect_to board_log_path(@board, @log), alert: "Failed to publish the log."
+    end
+  end
   
   def destroy
     @log = Log.find_by(hash_id: params[:id])
@@ -129,6 +155,12 @@ class LogsController < ApplicationController
       format.html {}
     end
   end
+
+  private
+    def generate_subdomain(log)
+      # You can customize this logic to generate a unique subdomain
+      "#{log.title.parameterize}-#{SecureRandom.hex(4)}"
+    end
 
   private
     def log_params

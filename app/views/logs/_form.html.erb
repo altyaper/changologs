@@ -1,3 +1,8 @@
+<% if @log.id? %>
+  <%= form_for [@board, @log], url: publish_board_log_path(@board, @log), method: :post, local: true do |form| %>
+    <%= form.submit "Publish", class: 'btn' %>
+  <% end %>
+<% end %>
 <%= form_for [@board, @log], local: true do |form| %>
   
   <div class="row">
@@ -47,6 +52,4 @@
 
     </div>
   </div>
-
- 
 <% end %>
