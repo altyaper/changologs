@@ -5,12 +5,23 @@
     </button>
   </div>
   <div class="menu">
-    <button class="menu-button mt-2">
+    <button class="btn menu-button mt-2">
       <a href="/boards"><%= fa_icon "folder" %>Boards</a>
     </button>
 
-    <button class="menu-button mt-2">
+    <button class="btn menu-button mt-2">
       <a href="/shared"><%= fa_icon "share" %>Shared</a>
     </button>
+
+    <div class="btn menu-button menu-dropdown mt-2">
+      <span><%= fa_icon "globe" %>Sites</span>
+      <ul>
+        <% @sites.each do |site| %>
+          <li>
+            <a href="#" class='btn'><%= site.name %></a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
   before_action :authenticate_client_or_user!
+  before_action :set_sites
   before_action :set_board, only: [:edit, :update, :destroy, :show]
   skip_before_action :verify_authenticity_token, only: [:share]
 

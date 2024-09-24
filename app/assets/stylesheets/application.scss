@@ -63,6 +63,16 @@ body {
       transition: all 0.3s ease-in-out;
     }
 
+    .btn {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(55, 53, 47, 0.65);
+      i {
+        width: 15px;
+        margin-right: 5px;
+      }
+    }
+
     .fa {
       color: rgba(55, 53, 47, 0.45);
     }
@@ -80,7 +90,7 @@ body {
           .fa {
             font-size: 30px;
           }
-          a {
+          a, span {
             display: none;
           }
         }
@@ -113,6 +123,18 @@ body {
         text-align: left;
         cursor: pointer;
         border-radius: 4px;
+        ul {
+          padding: 0;
+          margin: 0;
+          list-style: none;
+          li {
+            padding-left: 8px;
+            border-radius: 4px;
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.05);
+            }
+          }
+        }
         a {
           color: $light-grey;
           font-size: 14px;
@@ -124,6 +146,11 @@ body {
         }
         &:hover {
           background: rgba(0, 0, 0, 0.03);
+        }
+        &.menu-dropdown {
+          &:hover {
+            background-color: transparent;
+          }
         }
       }
     }
