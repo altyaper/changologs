@@ -13,7 +13,7 @@ class ApiClientsController < ApplicationController
     @user = current_user
     @api_client = current_user.api_clients.build(api_client_params)
     if @api_client.save
-      redirect_to profile_path, notice: 'API client created successfully.'
+      redirect_to profile_path, notice: "API client created successfully. #{@api_client.client_secret}"
     else
       render profile_path
     end

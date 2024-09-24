@@ -1,7 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-$(document).on("turbolinks:load", function () {
-  $("#add-friend-form").on("submit", function (event) {
+$(document).on("turbolinks:load", () => {
+  $("#add-friend-form").on("submit", (event) => {
     event.preventDefault();
   });
 
@@ -31,20 +31,20 @@ $(document).on("turbolinks:load", function () {
     });
   });
 
-  var handleAddButton = function (event) {
+  var handleAddButton = (event) => {
     var self = $(this);
     var userId = self.data("user-id");
-    $.post("/api/friend_requests", { userId: userId }).done(function () {
+    $.post("/api/friend_requests", { userId: userId }).done(() => {
       self.addClass("friend-request-added").html("Sent").prop("disabled", true);
     });
   };
 
   $("#possible-friends-list").on("click", "button", handleAddButton);
 
-  var handleAcceptFriendRequest = function (event) {
+  var handleAcceptFriendRequest = (event) => {
     var self = $(this);
     var userId = self.data("user-id");
-    $.post("/api/friends", { userId: userId }).done(function () {
+    $.post("/api/friends", { userId: userId }).done(() => {
       self
         .addClass("friend-request-added")
         .html("Added")
@@ -54,7 +54,7 @@ $(document).on("turbolinks:load", function () {
 
   $("#friend-requests-list").on("click", "button", handleAcceptFriendRequest);
 
-  $("#myModal").on("shown.bs.modal", function () {
+  $("#myModal").on("shown.bs.modal", () => {
     $("#myInput").trigger("focus");
   });
 });

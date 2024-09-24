@@ -53,6 +53,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'dotenv-rails'
+  gem 'byebug'
 end
 
 gem 'mailgun-ruby', '~>1.2.6'
@@ -64,8 +65,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pg'
 
 gem 'psych', '< 4'
-
-gem 'byebug'
 
 gem "wysiwyg-rails"
 gem "font-awesome-rails"

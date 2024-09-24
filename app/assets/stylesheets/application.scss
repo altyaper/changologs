@@ -15,8 +15,8 @@
  */
 
 @import "bootstrap";
+@import "common";
 @import "variables";
-@import "welcome";
 @import "boards";
 @import "logs";
 @import "friends";
@@ -149,16 +149,16 @@ body {
         left: 0;
         transform: translateX(-100%); // Initially hidden off-screen
         transition: transform 0.3s ease-in-out;
-    
+
         &.sidebar-open {
           transform: translateX(0); // Slide in on open
         }
       }
-    
+
       .hide-sidebar {
         display: none; // Optionally hide the button on mobile
       }
-    
+
       // Hamburger menu icon for toggling sidebar
       .hamburger {
         position: absolute;
@@ -166,7 +166,7 @@ body {
         left: 10px;
         cursor: pointer;
         z-index: 1100;
-    
+
         .line {
           width: 30px;
           height: 3px;
@@ -192,11 +192,11 @@ img {
 }
 
 .shadow {
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .shadow-sm {
-  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 
 .form-group {
@@ -214,17 +214,6 @@ img {
   }
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  padding: 10px 0px;
-  font-size: 14px;
-  color: rgba(0,0,0,.75);
-}
-  
 .profile-picture {
   width: 20px;
   height: 20px;
