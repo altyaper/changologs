@@ -14,9 +14,10 @@ $(document).on("turbolinks:load", () => {
   $("#shareModal").on("shown.bs.modal", () => {
     var selectedFriends = [];
     var friends = [];
-
+    let boardSelector = $("#share-board-button").attr("data-board-id");
     $.get("/api/friends", { board_id: boardSelector }, (data) => {
       friends = data;
+      console.log(friends);
       if (friends.length) {
         $("#shareModal #list-friends").html("");
       }

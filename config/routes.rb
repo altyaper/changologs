@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   draw :boards
   draw :users
   draw :api_clients
-
+  root 'boards#index'
 end
