@@ -13,6 +13,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def set_sites
+    @sites = Site.all  # Fetch all sites once for each request
+  end
+
+  private
+
   # This method will try to authenticate either an API client or a regular user
   def authenticate_client_or_user!
     if request.headers['Client-Id'].present? && request.headers['Client-Secret'].present?
