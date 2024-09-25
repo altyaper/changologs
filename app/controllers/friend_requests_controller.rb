@@ -10,7 +10,7 @@ class FriendRequestsController < ApplicationController
     @friend_request = FriendRequest.new
     @friend_request.requestor_id = current_user.id
     @friend_request.receiver_id = params[:userId]
-    
+
     if @friend_request.save!
       render json: {friend_request: @friend_request}
     else

@@ -1,6 +1,5 @@
 class SubdomainConstraint
   def matches?(request)
-    byebug
-    Site.where(subdomain: request.subdomain).exist?
+    Site.find_by(subdomain: request.subdomain)
   end
 end

@@ -112,7 +112,7 @@ class LogsController < ApplicationController
       full_url = "#{protocol}#{subdomain}.#{host_with_port}"
 
       @site = @log.build_site(
-        name: "Site for #{@log.title}", 
+        name: "#{@log.title}", 
         subdomain: subdomain,
         log_id: @log.id
       )
