@@ -3,19 +3,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_client_or_user!
-  before_action :set_sites
 
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:first_name, :last_name, :email, :password)}
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:first_name, :last_name, :email, :password, :current_password)}
-  end
-
-  private
-
-  def set_sites
-    @sites = Site.all  # Fetch all sites once for each request
   end
 
   private
