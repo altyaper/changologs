@@ -6,9 +6,8 @@
   overflow: hidden;
 
   .log-actions {
-    width: 100%;
     top: -100px;
-    left: 0;
+    right: 0;
     transition: all 0.5s cubic-bezier(0.25, 0.52, 0.03, 1.05);
     display: flex;
     justify-content: flex-end;
