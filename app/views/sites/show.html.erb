@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div class="log-details card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h2 class="card-title"><%= @log.title %></h2>
+      <small class="text-light">Posted by <%= @log.user.full_name %> on <%= @log.created_at.strftime("%B %d, %Y") %></small>
+    </div>
+    <div class="card-body">
+      <div class="log-content">
+        <p><%= sanitize @log.text %></p>
+      </div>
+    </div>
+    <div class="card-footer bg-light">
+      <div class="tags">
+        <% if @log.tags.any? %>
+          <strong>Tags:</strong>
+          <% @log.tags.each do |tag| %>
+            <span class="badge badge-secondary"><%= tag.name %></span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

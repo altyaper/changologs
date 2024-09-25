@@ -1,0 +1,28 @@
+<%= form_for [@board, @log], local: true do |form| %>
+  
+  <div class="row">
+    <div class="col-md-8 pb-5">
+    
+      <div class="form-group">
+        <%= form.hidden_field :title, value: 'changolog' %>
+      </div>
+    
+      <div class="form-groaup">
+        <%= form.label :text, 'Log' %><br>
+        <%= form.text_area :text, class: 'form-control', rows: 5 %>
+      </div>
+    </div>
+    <div class="col-md-4">
+
+      <div class="form-group">
+        <%= form.hidden_field :tag_list, value: 'daily-log' %>
+      </div>
+
+      <div class="form-group text-right">
+        <%= form.submit class: 'btn btn-primary d-block btn-block' %>
+        <%= link_to 'Cancel', board_path(@board), class: 'btn btn-secondary d-block btn-block' %>
+      </div>
+
+    </div>
+  </div>
+<% end %>

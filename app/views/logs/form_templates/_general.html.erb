@@ -1,0 +1,55 @@
+<% if @log.id? %>
+  <%= form_for [@board, @log], url: publish_board_log_path(@board, @log), method: :post, local: true do |form| %>
+    <%= form.submit "Publish", class: 'btn' %>
+  <% end %>
+<% end %>
+<%= form_for [@board, @log], local: true do |form| %>
+  
+  <div class="row">
+    <div class="col-md-8 pb-5">
+    
+      <div class="form-group">
+        <%= form.label :title %><br>
+        <%= form.text_field :title, class: 'form-control' %>
+      </div>
+    
+      <div class="form-groaup">
+        <%= form.label :text %><br>
+        <%= form.text_area :text, class: 'form-control', 'data-provider': :summernote, rows: 5, id: "summernote" %>
+      </div>
+    </div>
+    <div class="col-md-4">
+
+      <div class="form-group">
+        <%= form.label :board_id, "Board" %>
+        <%= form.select :board_id, options_for_select(@boards_options, @board.id), {}, { class: "form-control" } %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :tag_list %><br>
+        <%= form.text_field :tag_list, 'data-role'=>'tagsinput', class: 'form-control' %>
+      </div>
+
+      <div class="flex-column form-check form-check-inline">
+        <%= form.check_box :is_private, { checked: @log.is_private } %>
+        <%= form.label :is_private, 'Private', class: 'ml-2' %><br>
+      </div>
+
+      <div class="flex-column form-check form-check-inline">
+        <%= form.check_box :bluried, class: 'mr-2' %>
+        <%= form.label :bluried %><br>
+      </div>
+
+      <div class="flex-column form-check form-check-inline">
+        <%= form.color_field :color, value: @log.color || "#f9f9f9", class: 'mr-2' %>
+        <%= form.label :color %><br>
+      </div>
+
+      <div class="form-group text-right">
+        <%= form.submit class: 'btn btn-primary d-block btn-block' %>
+        <%= link_to 'Cancel', board_path(@board), class: 'btn btn-secondary d-block btn-block' %>
+      </div>
+
+    </div>
+  </div>
+<% end %>
