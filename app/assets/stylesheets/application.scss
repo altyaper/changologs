@@ -20,6 +20,7 @@
 @import "boards";
 @import "logs";
 @import "friends";
+@import "site";
 
 @import "summernote-bs4";
 @import "font-awesome";
@@ -28,9 +29,6 @@
   width: 100%;
 }
 
-body {
-  overflow: hidden;
-}
 
 .changologs-main-app-wrapper {
   height: 100vw;
@@ -241,6 +239,12 @@ img {
   }
 }
 
+.middle-profile-picture {
+  width: 48px;
+  height: 48px;
+  border-radius: 48px;
+}
+
 .profile-picture {
   width: 20px;
   height: 20px;
@@ -259,4 +263,9 @@ img {
 
 .align-center {
   align-items: center;
+}
+
+.static {
+  position: static;
+  width: 100%;
 }

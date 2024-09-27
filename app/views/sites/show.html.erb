@@ -1,0 +1,17 @@
+<div class="static">
+  <%= render 'partials/header' %>
+</div>
+<div class="container site-content">
+  <div class="row">
+    <div class="col-md-8 mx-auto p-2 pt-4">
+      <h1><%= @site.name %></h1>
+      <div class="flex align-center">
+        <%= image_tag rails_blob_url(@site.log.user.profile_picture), class: "middle-profile-picture" %>
+        <span class="ml-2"><%= @site.user.full_name %>
+      </div>
+      <div class="site-content-wrapper mt-4">
+        <%= sanitize @site.log.text %>
+      </div>
+    </div>
+  </div>
+</div>

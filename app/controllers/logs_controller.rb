@@ -114,7 +114,8 @@ class LogsController < ApplicationController
       @site = @log.build_site(
         name: "#{@log.title}", 
         subdomain: subdomain,
-        log_id: @log.id
+        log_id: @log.id,
+        user_id: current_user.id
       )
       
       if @site.save

@@ -18,7 +18,7 @@
       <ul>
         <% @sites.each do |site| %>
           <li>
-            <a href="#" class='btn'><%= site.name %></a>
+            <a href="http://<%= site.subdomain %>.lvh.me:3000" class='btn'><%= site.name %></a>
           </li>
         <% end %>
       </ul>
