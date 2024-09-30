@@ -26,11 +26,13 @@
         <%= link_to "Clear Filters", board_path(@board), class: "btn btn-outline-primary ml-2" %>
       <% end %>
     </div>
-    <div class="form-group ml-auto">
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="sentiment-switch">
-        <label class="custom-control-label" for="sentiment-switch">Show sentiment</label>
+    <% if @board.board_type === 'daily_log' %>
+      <div class="form-group ml-auto">
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="sentiment-switch">
+          <label class="custom-control-label" for="sentiment-switch">Show sentiment</label>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
