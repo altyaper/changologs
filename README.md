@@ -8,6 +8,7 @@ An application for saving simple but useful notes
 * Profile
 * Send emails when adding or removing logs
 * Share boards with other people
+* Sentiment analysis for Daily Log boards
 * 2FA
 
 ## How to run it
