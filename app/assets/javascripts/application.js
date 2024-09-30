@@ -24,6 +24,7 @@
 //= require friends
 //= require boards
 //= require api_client
+//= require daily_log
 //= require_tree .
 
 $( document ).on('turbolinks:load', () => {

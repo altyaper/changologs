@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_24_010229) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_30_055501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -94,8 +94,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_24_010229) do
     t.boolean "is_private", default: true
     t.boolean "bluried", default: false
     t.string "hash_id"
+    t.boolean "published"
+    t.string "sentiment"
     t.index ["board_id"], name: "index_logs_on_board_id"
     t.index ["user_id"], name: "index_logs_on_user_id"
+  end
+
+  create_table "sites", force: :cascade do |t|
+    t.string "subdomain"
+    t.string "name"
+    t.bigint "log_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["log_id"], name: "index_sites_on_log_id"
+    t.index ["user_id"], name: "index_sites_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -137,9 +150,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_24_010229) do
     t.string "otp_secret"
     t.integer "consumed_timestep"
     t.boolean "otp_required_for_login"
+    t.string "uid"
+    t.string "provider"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["jti"], name: "index_users_on_jti"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid"], name: "index_users_on_uid"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -152,6 +168,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_24_010229) do
   add_foreign_key "friendships", "users", column: "friend_b_id"
   add_foreign_key "logs", "boards"
   add_foreign_key "logs", "users"
+  add_foreign_key "sites", "logs"
+  add_foreign_key "sites", "users"
   add_foreign_key "taggings", "logs"
   add_foreign_key "taggings", "tags"
   add_foreign_key "user_boards", "boards"

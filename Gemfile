@@ -66,6 +66,8 @@ gem 'pg'
 
 gem 'psych', '< 4'
 
+gem 'sentimental'
+
 gem "wysiwyg-rails"
 gem "font-awesome-rails"
 gem "bootstrap-datepicker-rails"

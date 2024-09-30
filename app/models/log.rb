@@ -1,5 +1,7 @@
 class Log < ApplicationRecord
   include Friendlyable
+
+  before_save :analyze_sentiment
   
   belongs_to :user
   belongs_to :board
@@ -20,6 +22,21 @@ class Log < ApplicationRecord
 
   def self.search(search)
     search ? where('lower(title) LIKE ? OR lower(text) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%") : all
+  end
+
+  private
+
+  def analyze_sentiment
+    analyzer = Sentimental.new
+    analyzer.load_defaults
+    score = analyzer.score(self.text)
+    if score > 0.1
+      self.sentiment = 'positive'
+    elsif score < -0.1
+      self.sentiment = 'negative'
+    else
+      self.sentiment = 'neutral'
+    end
   end
 
 end
